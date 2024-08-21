@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vCard - Personal Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.png" alt="Karan Surana" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Karan Surana">Karan Surana</h1>
+
+          <p class="title">Full Stack Developer</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:karansurana23@gmail.com" class="contact-link">karansurana23@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+61448074273" class="contact-link">+61 448 074 273</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Sydney, Australia</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/karan-surana-/" class="social-link" target="_blank">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://github.com/KaranSurana" class="social-link" target="_blank">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+
+            I am an innovative Full-Stack Developer with a strong background in web development and software
+            engineering, particularly skilled in both front-end and back-end technologies. With a solid foundation in
+            programming languages like C++, GoLang, Python, and JavaScript, I have a proven track record of delivering
+            high-quality software solutions. My experience spans across academic tutoring, where I clarify complex web
+            development concepts with ease, and professional roles where I've developed aesthetic interfaces, enhanced
+            system efficiencies, created robust backend systems and contributed to real-time, responsive applications.
+            I'm passionate about driving innovation and leveraging my technical expertise to create impactful solutions.
+          </p>
+        </section>
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What I'm Doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/noun-frontend-4202815.svg" alt="Front End Development" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Front End Development</h4>
+
+                <p class="service-item-text">
+                  Crafting visually stunning and highly interactive user interfaces with a focus on user experience.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Back End Development" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Back End Development</h4>
+
+                <p class="service-item-text">
+                  Building robust and scalable server-side applications to power web solutions.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/noun-machine-learning-6702428.svg" alt="Machine Learning" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Machine Learning</h4>
+
+                <p class="service-item-text">
+                  Creating advanced machine learning models that analyze complex data patterns to deliver actionable
+                  insights.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/noun-blockchain-5712205.svg" alt="Blockchain Development" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Blockchain Development</h4>
+
+                <p class="service-item-text">
+                  Innovating secure and decentralized applications for the next generation of digital solutions.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+        <!--
+          - testimonials
+        -->
+
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Testimonials</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Hayden Smith" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Hayden Smith</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Karan consistently demonstrated exceptional technical proficiency in Web Frontend Programming,
+                    making complex concepts easily understandable for students. His communication skills were
+                    outstanding, enabling him to connect with students and foster an engaging learning environment.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-2.png" alt="Limin Deng" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Limin Deng</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Karan demonstrated exceptional problem-solving skills during his tenure at Tutehub. His work on
+                    automating data retrieval processes, crafting a pivotal feature for our Java-based software that
+                    streamlined operations, and optimizing data flow to the company’s website played a crucial role in
+                    elevating our projects and client satisfaction.
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Ali Darejeh" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Ali Darejeh</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Karan Surana brought enthusiasm and a deep understanding of Computer Graphics to his tutoring role.
+                    His clear explanations and supportive approach were highly valued by students, making him a key
+                    contributor to their learning experience.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-4.png" alt="Mahendra Mehta" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Mahendra Mehta</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Karan Surana's performance as a Web Development Intern was exemplary. He was instrumental in
+                    building robust backend systems with the entire team that enhanced our application's functionality
+                    and overall user experience, showcasing his expertise and commitment to quality.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+        <!--
+          - testimonials modal
+        -->
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Hayden Smith" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Hayden Smith</h4>
+
+              <time datetime="2024-08-18">18 August, 2024</time>
+
+              <div data-modal-text>
+                <p>
+                  Karan consistently delivers high-quality work and is very attentive to client needs. His expertise in
+                  full-stack development is evident in the exceptional websites he creates.
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+        <!--
+          - clients (removed)
+        -->
+
+      </article>
+
+      <!--
+        - #RESUME
+      -->
+
+      <!-- #RESUME -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">UNSW Sydney</h4>
+
+              <span>September 2022 - August 2024</span>
+
+              <p class="timeline-text">
+              <ul>
+                <li class="timeline-text">Masters in Information technology</li>
+                <li class="timeline-text">Majors: Artificial Intelligence & Information Technology</li>
+                <li class="timeline-text">WAM: Distinction</li>
+              </ul>
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">University of Mumbai</h4>
+
+              <span>June 2019 - June 2022</span>
+
+              <p class="timeline-text">
+              <ul>
+                <li class="timeline-text">Bachelors in Computer Science</li>
+                <li class="timeline-text">CGPA: 9.46</li>
+              </ul>
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="briefcase-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Academic Tutor</h4>
+
+              <span>UNSW Sydney — February 2024 - Present</span>
+
+              <ul>
+                <li class="timeline-text" style="list-style-type: circle;">Conducting engaging lectures to elucidate
+                  complex web development concepts.</li>
+                <li class="timeline-text" style="list-style-type: circle;">Offering comprehensive support and guidance
+                  to students regarding their doubts in web development.</li>
+                <li class="timeline-text" style="list-style-type: circle;">Demonstrating expertise in web development
+                  concepts by teaching difficult topics with ease and clarity.</li>
+              </ul>
+              <p style="color: #FFC107;">Tech Stack: React, JavaScript, TypeScript, NodeJS</p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Software Developer</h4>
+
+              <span>Tutehub — August 2023 - January 2024</span>
+
+              <ul>
+                <li class="timeline-text" style="list-style-type: circle;">Developed Python Selenium scripts to automate
+                  data retrieval processes, decreasing the response time by 45%.</li>
+                <li class="timeline-text" style="list-style-type: circle;">Designed, maintained, and debugged Java-based
+                  Spring Boot applications to develop effective software solutions tailored to client needs.</li>
+                <li class="timeline-text" style="list-style-type: circle;">Conducted extensive testing to ensure the
+                  reliability and high performance of the designed applications.</li>
+              </ul>
+              <p style="color: #FFC107;">Tech Stack: Python, Java, JavaScript, React</p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Future Ready Talent Intern</h4>
+
+              <span>Microsoft — October 2021 - February 2022</span>
+
+              <ul>
+                <li class="timeline-text" style="list-style-type: circle;">Spearheaded the development and deployment of
+                  a smart chatbot leveraging Microsoft Azure Services.</li>
+                <li class="timeline-text" style="list-style-type: circle;">Fostered collaborative efforts within the
+                  team to seamlessly integrate Azure Features and machine learning functionalities into project
+                  frameworks.</li>
+                <li class="timeline-text" style="list-style-type: circle;">Offered comprehensive documentation and
+                  technical support to ensure the effective implementation and maintenance of solutions.</li>
+              </ul>
+              <p style="color: #FFC107;">Tech Stack: Python, Azure, JavaScript, SQL</p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Backend Developer Intern</h4>
+
+              <span>Omuni — January 2022 - February 2022</span>
+
+              <ul>
+                <li class="timeline-text" style="list-style-type: circle;">Enhanced the Inventory Management System,
+                  resulting in a 30% increase in data processing efficiency by streamlining database queries, and
+                  improving API calls in the frontend.</li>
+                <li class="timeline-text" style="list-style-type: circle;">Optimized NodeJS architecture and implemented
+                  new features to enhance client experiences.</li>
+              </ul>
+              <p style="color: #FFC107;">Tech Stack: React, NodeJS, JavaScript, TypeScript, SQL</p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My Skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Java</h5>
+                <data value="85">85%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Python</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">ReactJS</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">NodeJS</h5>
+                <data value="95">95%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 95%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">JavaScript</h5>
+                <data value="85">85%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">PostgreSQL</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+      </article>
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Full Stack Development</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Machine Learning</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Blockchain</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Restful API</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Full Stack Development</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Machine Learning</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Blockchain</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Restful API</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <!-- XenoAI Project -->
+            <li class="project-item active" data-filter-item data-category="Machine Learning">
+              <a href="#" class="project-link" data-modal-open="project1">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-8.jpg" alt="XenoAI" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">XenoAI</h3>
+
+                <p class="project-category">Machine Learning</p>
+
+              </a>
+            </li>
+
+            <!-- CircleUp Project -->
+            <li class="project-item active" data-filter-item data-category="Full Stack Development">
+              <a href="#" class="project-link" data-modal-open="project2">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/resized_social_media_image (1).png" alt="CircleUp" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">CircleUp</h3>
+
+                <p class="project-category">Full Stack Development</p>
+
+              </a>
+            </li>
+
+            <!-- MarketXchange Project -->
+            <li class="project-item active" data-filter-item data-category="Full Stack Development">
+              <a href="#" class="project-link" data-modal-open="project3">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-2.png" alt="MarketXchange" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">MarketXchange</h3>
+
+                <p class="project-category">Full Stack Development</p>
+
+              </a>
+            </li>
+
+            <!-- Eden: Smart Assistant Project -->
+            <li class="project-item active" data-filter-item data-category="Machine Learning">
+              <a href="#" class="project-link" data-modal-open="project4">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-4.png" alt="Eden: Smart Assistant" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Eden: Smart Assistant</h3>
+
+                <p class="project-category">Machine Learning</p>
+
+              </a>
+            </li>
+
+            <!-- Airbrb Project -->
+            <li class="project-item active" data-filter-item data-category="Full Stack Development">
+              <a href="#" class="project-link" data-modal-open="project5">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-3.jpg" alt="Airbrb" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Airbrb</h3>
+
+                <p class="project-category">Full Stack Development</p>
+
+              </a>
+            </li>
+
+            <!-- slackr Project -->
+            <li class="project-item active" data-filter-item data-category="Full Stack Development">
+              <a href="#" class="project-link" data-modal-open="project6">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/86c1b5f7-f545-45be-ba77-28413356a102.jpg" alt="slackr" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">slackr</h3>
+
+                <p class="project-category">Full Stack Development</p>
+
+              </a>
+            </li>
+
+            <!-- decentropedias Project -->
+            <li class="project-item active" data-filter-item data-category="Blockchain">
+              <a href="#" class="project-link" data-modal-open="project7">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-9.png" alt="decentropedia" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">decentropedia</h3>
+
+                <p class="project-category">Blockchain</p>
+
+              </a>
+            </li>
+
+            <!-- Issue Tracker Project -->
+            <li class="project-item active" data-filter-item data-category="Full Stack Development">
+              <a href="#" class="project-link" data-modal-open="project8">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-6.png" alt="Issue Tracker" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Issue Tracker</h3>
+
+                <p class="project-category">Full Stack Development</p>
+
+              </a>
+            </li>
+
+            <!-- EcommerceAPI Project -->
+            <li class="project-item active" data-filter-item data-category="Restful API">
+              <a href="#" class="project-link" data-modal-open="project9">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-1.jpg" alt="EcommerceAPI" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">EcommerceAPI</h3>
+
+                <p class="project-category">Restful API</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!-- Project Modals -->
+
+      <!-- XenoAI Project Modal -->
+      <div class="modal-container" id="project1" data-modal-container>
+
+        <div class="overlay" data-overlay></div>
+
+        <section class="testimonials-modal" style="background-color: #333; color: #fff;">
+
+          <button class="modal-close-btn" data-modal-close-btn style="color: #FFC107;">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="modal-content">
+
+            <h4 class="h3 modal-title" data-modal-title style="text-align: left; margin-bottom: 15px; color: #FFC107;">
+              XenoAI</h4>
+
+            <div data-modal-text>
+              <ul style="list-style-type: circle; padding-left: 20px; text-align: left; color: #fff;">
+                <li style="list-style-type: circle;">XenoAI identifies its authorized users and, upon validation,
+                  facilitates payments through the United Payment Interface (UPI).</li>
+                <li style="list-style-type: circle;">The system streamlines the payment process, making it quick and
+                  efficient.</li>
+                <li style="list-style-type: circle;">Supports multiple payment methods, including Google Pay and Paytm.
+                </li>
+                <li style="list-style-type: circle;">Utilizes core libraries such as Librosa and Numpy to extract and
+                  compare voice features.</li>
+              </ul>
+            </div>
+
+            <div style="text-align: left; margin-top: 20px;">
+              <a href="https://github.com/KaranSurana" class="button" target="_blank"
+                style="background-color: #FFC107; padding: 10px 20px; color: #000; text-decoration: none; border-radius: 5px;">View
+                Project</a>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- CircleUp Project Modal -->
+      <div class="modal-container" id="project2" data-modal-container>
+
+        <div class="overlay" data-overlay></div>
+
+        <section class="testimonials-modal" style="background-color: #333; color: #fff;">
+
+          <button class="modal-close-btn" data-modal-close-btn style="color: #FFC107;">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="modal-content">
+
+            <h4 class="h3 modal-title" data-modal-title style="text-align: left; margin-bottom: 15px; color: #FFC107;">
+              CircleUp</h4>
+
+            <div data-modal-text>
+              <ul style="list-style-type: circle; padding-left: 20px; text-align: left; color: #fff;">
+                <li style="list-style-type: circle;">Designed and implemented a Full stack Social Media application.
+                </li>
+                <li style="list-style-type: circle;">Features include user authentication, messaging, posting photos and
+                  videos, commenting, liking, and following other users.</li>
+                <li style="list-style-type: circle;">Utilized React, NodeJS, and Redis for robust and scalable
+                  development.</li>
+              </ul>
+            </div>
+
+            <div style="text-align: left; margin-top: 20px;">
+              <a href="https://github.com/KaranSurana" class="button" target="_blank"
+                style="background-color: #FFC107; padding: 10px 20px; color: #000; text-decoration: none; border-radius: 5px;">View
+                Project</a>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- MarketXchange Project Modal -->
+      <div class="modal-container" id="project3" data-modal-container>
+
+        <div class="overlay" data-overlay></div>
+
+        <section class="testimonials-modal" style="background-color: #333; color: #fff;">
+
+          <button class="modal-close-btn" data-modal-close-btn style="color: #FFC107;">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="modal-content">
+
+            <h4 class="h3 modal-title" data-modal-title style="text-align: left; margin-bottom: 15px; color: #FFC107;">
+              MarketXchange</h4>
+
+            <div data-modal-text>
+              <ul style="list-style-type: circle; padding-left: 20px; text-align: left; color: #fff;">
+                <li style="list-style-type: circle;">Developed an engaging online marketplace with real-time bidding and
+                  secure payment processing.</li>
+                <li style="list-style-type: circle;">Integrated advanced user analytics to personalize product
+                  suggestions.</li>
+                <li style="list-style-type: circle;">Ensured responsive design for seamless user experience across
+                  devices.</li>
+              </ul>
+            </div>
+
+            <div style="text-align: left; margin-top: 20px;">
+              <a href="https://github.com/KaranSurana" class="button" target="_blank"
+                style="background-color: #FFC107; padding: 10px 20px; color: #000; text-decoration: none; border-radius: 5px;">View
+                Project</a>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- Eden: Smart Assistant Project Modal -->
+      <div class="modal-container" id="project4" data-modal-container>
+
+        <div class="overlay" data-overlay></div>
+
+        <section class="testimonials-modal" style="background-color: #333; color: #fff;">
+
+          <button class="modal-close-btn" data-modal-close-btn style="color: #FFC107;">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="modal-content">
+
+            <h4 class="h3 modal-title" data-modal-title style="text-align: left; margin-bottom: 15px; color: #FFC107;">
+              Eden: Smart Assistant</h4>
+
+            <div data-modal-text>
+              <ul style="list-style-type: circle; padding-left: 20px; text-align: left; color: #fff;">
+                <li style="list-style-type: circle;">Built a smart assistant application leveraging machine learning
+                  algorithms.</li>
+                <li style="list-style-type: circle;">Implemented voice recognition, task scheduling, and predictive
+                  analysis features.</li>
+                <li style="list-style-type: circle;">Used Python and TensorFlow for building intelligent backend
+                  processing.</li>
+              </ul>
+            </div>
+
+            <div style="text-align: left; margin-top: 20px;">
+              <a href="https://github.com/KaranSurana/Eden" class="button" target="_blank"
+                style="background-color: #FFC107; padding: 10px 20px; color: #000; text-decoration: none; border-radius: 5px;">View
+                Project</a>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- Airbrb Project Modal -->
+      <div class="modal-container" id="project5" data-modal-container>
+
+        <div class="overlay" data-overlay></div>
+
+        <section class="testimonials-modal" style="background-color: #333; color: #fff;">
+
+          <button class="modal-close-btn" data-modal-close-btn style="color: #FFC107;">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="modal-content">
+
+            <h4 class="h3 modal-title" data-modal-title style="text-align: left; margin-bottom: 15px; color: #FFC107;">
+              Airbrb</h4>
+
+            <div data-modal-text>
+              <ul style="list-style-type: circle; padding-left: 20px; text-align: left; color: #fff;">
+                <li style="list-style-type: circle;">Full stack application based on Airbnb.</li>
+                <li style="list-style-type: circle;">Implemented features like property listing, booking, and user
+                  reviews.</li>
+              </ul>
+            </div>
+
+            <div style="text-align: left; margin-top: 20px;">
+              <a href="https://github.com/KaranSurana/AirBrb" class="button" target="_blank"
+                style="background-color: #FFC107; padding: 10px 20px; color: #000; text-decoration: none; border-radius: 5px;">View
+                Project</a>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- slackr Project Modal -->
+      <div class="modal-container" id="project6" data-modal-container>
+
+        <div class="overlay" data-overlay></div>
+
+        <section class="testimonials-modal" style="background-color: #333; color: #fff;">
+
+          <button class="modal-close-btn" data-modal-close-btn style="color: #FFC107;">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="modal-content">
+
+            <h4 class="h3 modal-title" data-modal-title style="text-align: left; margin-bottom: 15px; color: #FFC107;">
+              slackr</h4>
+
+            <div data-modal-text>
+              <ul style="list-style-type: circle; padding-left: 20px; text-align: left; color: #fff;">
+                <li style="list-style-type: circle;">Full stack application based on Slack.</li>
+                <li style="list-style-type: circle;">Features include real-time messaging, channels, and user
+                  management.</li>
+              </ul>
+            </div>
+
+            <div style="text-align: left; margin-top: 20px;">
+              <a href="https://github.com/KaranSurana/Slackr" class="button" target="_blank"
+                style="background-color: #FFC107; padding: 10px 20px; color: #000; text-decoration: none; border-radius: 5px;">View
+                Project</a>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- decentropedia Project Modal -->
+      <div class="modal-container" id="project7" data-modal-container>
+
+        <div class="overlay" data-overlay></div>
+
+        <section class="testimonials-modal" style="background-color: #333; color: #fff;">
+
+          <button class="modal-close-btn" data-modal-close-btn style="color: #FFC107;">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="modal-content">
+
+            <h4 class="h3 modal-title" data-modal-title style="text-align: left; margin-bottom: 15px; color: #FFC107;">
+              decentropedias</h4>
+
+            <div data-modal-text>
+              <ul style="list-style-type: circle; padding-left: 20px; text-align: left; color: #fff;">
+                <li style="list-style-type: circle;">Decentralized version of Wikipedia.</li>
+                <li style="list-style-type: circle;">Implemented using blockchain technology to ensure transparency and
+                  immutability.</li>
+              </ul>
+            </div>
+
+            <div style="text-align: left; margin-top: 20px;">
+              <a href="https://github.com/KaranSurana/Decentropedia" class="button" target="_blank"
+                style="background-color: #FFC107; padding: 10px 20px; color: #000; text-decoration: none; border-radius: 5px;">View
+                Project</a>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- Issue Tracker Project Modal -->
+      <div class="modal-container" id="project8" data-modal-container>
+
+        <div class="overlay" data-overlay></div>
+
+        <section class="testimonials-modal" style="background-color: #333; color: #fff;">
+
+          <button class="modal-close-btn" data-modal-close-btn style="color: #FFC107;">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="modal-content">
+
+            <h4 class="h3 modal-title" data-modal-title style="text-align: left; margin-bottom: 15px; color: #FFC107;">
+              Issue Tracker</h4>
+
+            <div data-modal-text>
+              <ul style="list-style-type: circle; padding-left: 20px; text-align: left; color: #fff;">
+                <li style="list-style-type: circle;">Just like GitHub but only for issues.</li>
+                <li style="list-style-type: circle;">Developed to track issues across multiple projects with efficient
+                  filtering and sorting.</li>
+                <li style="list-style-type: circle;">Included features like creation, deletion, assigning &
+                  categorization of the issues.</li>
+              </ul>
+            </div>
+
+            <div style="text-align: left; margin-top: 20px;">
+              <a href="https://github.com/KaranSurana/IssueTracker" class="button" target="_blank"
+                style="background-color: #FFC107; padding: 10px 20px; color: #000; text-decoration: none; border-radius: 5px;">View
+                Project</a>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- EcommerceAPI Project Modal -->
+      <div class="modal-container" id="project9" data-modal-container>
+
+        <div class="overlay" data-overlay></div>
+
+        <section class="testimonials-modal" style="background-color: #333; color: #fff;">
+
+          <button class="modal-close-btn" data-modal-close-btn style="color: #FFC107;">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="modal-content">
+
+            <h4 class="h3 modal-title" data-modal-title style="text-align: left; margin-bottom: 15px; color: #FFC107;">
+              EcommerceAPI</h4>
+
+            <div data-modal-text>
+              <ul style="list-style-type: circle; padding-left: 20px; text-align: left; color: #fff;">
+                <li style="list-style-type: circle;">Restful API project having numerous endpoints for data
+                  communication for an active eCommerce website.</li>
+                <li style="list-style-type: circle;">Implemented secure authentication and real-time inventory
+                  management.</li>
+              </ul>
+            </div>
+
+            <div style="text-align: left; margin-top: 20px;">
+              <a href="https://github.com/KaranSurana/EcommerceAPI" class="button" target="_blank"
+                style="background-color: #FFC107; padding: 10px 20px; color: #000; text-decoration: none; border-radius: 5px;">View
+                Project</a>
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBd_1iFM9jlw12OjY1Wce2UpVmHUrWCEiQ
+                &q=Sydney, Australia">
+            </iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="#" class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
