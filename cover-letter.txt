@@ -1,0 +1,20 @@
+Karan Surana
+044 807 4273 | karansurana23@gmail.com
+https://karansurana.github.io
+
+Dear Hiring Manager,
+
+I'm a full-stack developer with over 3 years of experience building web applications that actually work at scale. I've spent my career turning messy business problems into clean, maintainable software — and I'm good at it.
+
+At youXpowered, I led a team of 8 to build youXinsights, an analytics platform that replaced Power BI for over 10 organisations. I designed the system architecture, built real-time data pipelines, and shipped interactive dashboards across 25+ report types. I also owned the full lifecycle of youXapply from scratch — design through deployment and ongoing support. When something broke, I was the one who fixed it.
+
+Before that, at Gida Technologies, I cut API response times by 60%, built out an inventory management system from the ground up, and introduced caching and multi-threaded processing that made the backend noticeably faster.
+
+I care about writing software that's straightforward to maintain and easy for the next person to pick up. I think about how systems fit together, not just how individual features work. I've designed backend architectures, optimised databases, set up CI/CD pipelines, and deployed across AWS — and I've done it while sitting in the same room as the people who actually use the product, making sure what we build matches what they need.
+
+I hold a Master's in Information Technology (AI specialisation) from UNSW Sydney, with Distinction. My day-to-day stack includes TypeScript, React, Next.js, Node.js, and AWS, but I pick up whatever the job requires.
+
+I'd welcome the chance to talk about how I can contribute to your team.
+
+Best regards,
+Karan Surana
