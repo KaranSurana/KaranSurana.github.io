@@ -27,11 +27,11 @@ export default function Hero() {
 
           <motion.div className="hero__actions" variants={fadeUp}>
             <motion.a
-              href="#projects"
+              href="#experience"
               className="btn btn--primary"
               whileTap={{ scale: 0.97 }}
             >
-              View Projects
+              View Experience
             </motion.a>
             <motion.a
               href={identity.resumeUrl}
