@@ -13,7 +13,7 @@ export const identity = {
   avatar: '/assets/images/my-avatar.png',
   resumeUrl: '/KaranSurana_Resume.pdf',
   profile: [
-    'Experienced Software Engineer with ~3 years of hands-on experience building scalable, production-grade web applications. Adept at system design and architecture, translating complex requirements into clean, maintainable, and scalable technical solutions. Proficient in crafting responsive UIs and robust backend systems, with practical exposure to cloud infrastructure and modern DevOps practices.',
+    'Experienced Software Engineer with ~3 years of hands-on experience building scalable, production-grade web applications. Adept at system design and architecture, translating complex requirements into clean, maintainable, and scalable technical solutions.',
     'A big part of my day-to-day is bridging business and engineering: taking vague, high-level asks from the C-suite and translating them into concrete functional and non-functional requirements, designing the system architecture, and building the code that ships — owning the journey from boardroom sentence to production product.',
   ],
 }
