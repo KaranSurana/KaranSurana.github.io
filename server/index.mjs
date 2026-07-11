@@ -373,7 +373,11 @@ const server = http.createServer(async (req, res) => {
   send(res, 404, { error: 'not found' })
 })
 
-server.listen(PORT, () => {
+// In production, set GHOST_HOST=127.0.0.1 so only the reverse proxy
+// can reach the ghost directly.
+const HOST = process.env.GHOST_HOST || '0.0.0.0'
+
+server.listen(PORT, HOST, () => {
   console.log(`👻 KARAN.EXE listening on http://localhost:${PORT}`)
   console.log(`   mode: ${MOCK ? 'MOCK (no ANTHROPIC_API_KEY — canned personality, real FX)' : `LIVE (${MODEL})`}`)
   console.log(`   allowed origins: ${ORIGINS.join(', ')}`)

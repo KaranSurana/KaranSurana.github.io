@@ -35,6 +35,9 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # KARAN.EXE brain on EC2 (sslip.io -> 3.6.105.98, HTTPS via Caddy)
+          VITE_GHOST_API: https://3-6-105-98.sslip.io
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
