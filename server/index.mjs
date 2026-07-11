@@ -184,7 +184,7 @@ const MOCK_SPECTACLE = [
   { reply: "CRT mode. it's 1994 and Karan's code still compiles.", actions: [{ type: 'crt', param: 'on' }, { type: 'storm', param: '6' }] },
 ]
 let mockCursor = 0
-function mockBrain(lastUserMessage, prefix = '(demo brain — add ANTHROPIC_API_KEY for the real me) ') {
+function mockBrain(lastUserMessage, prefix = '(running on reserve power) ') {
   for (const r of MOCK_RESPONSES) {
     if (r.test.test(lastUserMessage)) return { reply: r.reply, actions: r.actions }
   }

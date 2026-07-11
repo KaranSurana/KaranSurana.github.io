@@ -1456,11 +1456,16 @@ h1, h2, h3, h4 {
 
 .ghost-panel__head {
   display: flex;
-  align-items: center;
+  align-items: baseline; /* title + mode share a text baseline */
   gap: 10px;
   padding: 12px 14px;
   border-bottom: 1px solid var(--border);
   background: rgba(148, 163, 184, 0.05);
+}
+
+.ghost-panel__dot,
+.ghost-panel__close {
+  align-self: center;
 }
 
 .ghost-panel__dot {

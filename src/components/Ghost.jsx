@@ -357,7 +357,9 @@ export default function Ghost() {
       } catch {
         setMode('offline')
         pushGhost(
-          "my brain server is offline (run: cd server && node index.mjs). my body still works, though — watch.",
+          import.meta.env.DEV
+            ? 'my brain server is offline (run: cd server && node index.mjs). my body still works, though — watch.'
+            : "hm. I can't reach my brain right now — the server must be napping. my body still works, though — watch.",
         )
         runActions([
           [{ type: 'glitch', param: '' }],
@@ -503,9 +505,10 @@ export default function Ghost() {
             className="ghost-dock"
             onClick={() => setOpen(true)}
             aria-label="Open KARAN.EXE — the AI living in this site"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: booted ? 8 : 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.2, duration: 0.6, ease: EASE }}
+            // long delay only on first page load — reappear instantly after closing
+            transition={{ delay: booted ? 0 : 2.2, duration: booted ? 0.25 : 0.6, ease: EASE }}
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}
           >
