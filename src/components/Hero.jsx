@@ -38,7 +38,7 @@ export default function Hero() {
       const el = document.getElementById('hero-name')
       if (!el || document.hidden) return
       el.classList.add('ghost-glitch')
-      removeTimer = setTimeout(() => el.classList.remove('ghost-glitch'), 900)
+      removeTimer = setTimeout(() => el.classList.remove('ghost-glitch'), 1800)
     }, 5000)
     return () => {
       clearInterval(interval)
