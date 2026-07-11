@@ -227,17 +227,12 @@ export default function Ghost() {
     later(() => el.classList.remove('ghost-spin'), 2800)
   }, [later])
 
-  const doTour = useCallback(
-    (section) => {
-      const id = TOUR_SECTIONS.includes(section) ? section : 'about'
-      const el = document.getElementById(id)
-      if (!el) return
-      el.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' })
-      el.classList.add('ghost-tour-glow')
-      later(() => el.classList.remove('ghost-tour-glow'), 3500)
-    },
-    [later],
-  )
+  const doTour = useCallback((section) => {
+    const id = TOUR_SECTIONS.includes(section) ? section : 'about'
+    const el = document.getElementById(id)
+    if (!el) return
+    el.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' })
+  }, [])
 
   const stopParty = useCallback(() => {
     if (partyInterval.current) {

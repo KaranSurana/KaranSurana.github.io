@@ -29,20 +29,34 @@ function GhostHeadline({ text }) {
 export default function Hero() {
   const { headline, setGhostOpen } = useGhostFX()
 
-  // Ambient self-glitch: the name flickers with an RGB-split every ~5s,
-  // like the site is quietly alive. Respects reduced-motion.
+  // Ambient self-glitch: the name flickers with an RGB-split for 3s,
+  // then rests 5s before the next burst (gap starts after the animation
+  // ends, not on a fixed interval). Respects reduced-motion + hidden tabs.
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    let removeTimer
-    const interval = setInterval(() => {
+    let timer
+    let alive = true
+    const GLITCH_MS = 3000
+    const GAP_MS = 5000
+
+    const glitch = () => {
+      if (!alive) return
       const el = document.getElementById('hero-name')
-      if (!el || document.hidden) return
+      if (!el || document.hidden) {
+        timer = setTimeout(glitch, GAP_MS) // retry after the gap
+        return
+      }
       el.classList.add('ghost-glitch')
-      removeTimer = setTimeout(() => el.classList.remove('ghost-glitch'), 1800)
-    }, 5000)
+      timer = setTimeout(() => {
+        el.classList.remove('ghost-glitch')
+        timer = setTimeout(glitch, GAP_MS) // 5s rest AFTER the 3s animation
+      }, GLITCH_MS)
+    }
+
+    timer = setTimeout(glitch, GAP_MS) // first burst after an initial rest
     return () => {
-      clearInterval(interval)
-      clearTimeout(removeTimer)
+      alive = false
+      clearTimeout(timer)
       document.getElementById('hero-name')?.classList.remove('ghost-glitch')
     }
   }, [])
