@@ -886,6 +886,11 @@ h1, h2, h3, h4 {
   gap: var(--space-3);
 }
 
+/* with an odd card count, let the last card span the full row */
+.skills-grid > .skill-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .skill-card {
   padding: var(--space-5);
 }

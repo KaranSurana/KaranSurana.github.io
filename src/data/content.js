@@ -23,7 +23,7 @@ export const socials = {
 
 export const stats = [
   { value: 3, suffix: '+', label: 'Years of experience' },
-  { value: 10, suffix: '+', label: 'Organisations served' },
+  { value: 700, suffix: '+', label: 'Students mentored at UNSW' },
   { value: 25, suffix: '+', label: 'Report types shipped' },
   { value: 90, suffix: '%', label: 'Write-time cut with AI' },
 ]
@@ -31,7 +31,7 @@ export const stats = [
 export const marqueeTech = [
   'React', 'TypeScript', 'Next.js', 'Node.js', 'Express', 'AWS', 'Docker',
   'Kubernetes', 'Kafka', 'Redis', 'PostgreSQL', 'MongoDB', 'MySQL', 'Python',
-  'Java', 'Git', 'CI/CD',
+  'Java', 'Claude Code', 'OpenClaw', 'Git', 'CI/CD',
 ]
 
 export const services = [
@@ -143,6 +143,18 @@ export const skillGroups = [
     title: 'Data & Quality',
     skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Data Structures & Algorithms', 'Unit & Integration Testing'],
   },
+  {
+    icon: 'sparkles',
+    title: 'AI & Agentic Tools',
+    skills: [
+      'Claude Code',
+      'OpenClaw',
+      'LLM API Integration',
+      'Prompt Engineering',
+      'AI-powered Microservices',
+      'Agentic Workflows',
+    ],
+  },
 ]
 
 export const projectCategories = [
@@ -178,7 +190,7 @@ export const projects = [
     tagline: 'MERN single-page app for managing loan finance applications.',
     category: 'fullstack',
     categoryLabel: 'Full Stack',
-    image: null, // rendered with a gradient cover
+    image: '/assets/images/asset-finance.svg',
     live: 'https://d12gtgoagbp5j.cloudfront.net/',
     github: null,
     featured: true,

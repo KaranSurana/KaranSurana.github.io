@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Cloud, Database, MonitorSmartphone, Server } from 'lucide-react'
+import { Cloud, Database, MonitorSmartphone, Server, Sparkles } from 'lucide-react'
 import { skillGroups } from '../data/content.js'
 import { fadeUp, stagger, viewportOnce } from '../lib/motion.js'
 import { SectionHeading, SpotlightCard } from './ui.jsx'
@@ -9,6 +9,7 @@ const ICONS = {
   server: Server,
   cloud: Cloud,
   database: Database,
+  sparkles: Sparkles,
 }
 
 export default function Skills() {

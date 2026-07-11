@@ -1,0 +1,103 @@
+<svg viewBox="0 0 1200 750" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Asset Finance Management Platform — dashboard illustration">
+  <defs>
+    <radialGradient id="glow1" cx="15%" cy="10%" r="60%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="90%" cy="25%" r="55%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow3" cx="50%" cy="105%" r="70%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#94a3b8" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- backdrop -->
+  <rect width="1200" height="750" fill="#0b1120"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <rect width="1200" height="750" fill="url(#glow1)"/>
+  <rect width="1200" height="750" fill="url(#glow2)"/>
+  <rect width="1200" height="750" fill="url(#glow3)"/>
+
+  <!-- main glass panel -->
+  <rect x="150" y="110" width="900" height="530" rx="26" fill="#0f172a" fill-opacity="0.72" stroke="#94a3b8" stroke-opacity="0.22"/>
+  <rect x="150.5" y="110.5" width="899" height="529" rx="25.5" fill="none" stroke="#ffffff" stroke-opacity="0.05"/>
+
+  <!-- window chrome -->
+  <circle cx="192" cy="148" r="7" fill="#ef4444" fill-opacity="0.75"/>
+  <circle cx="218" cy="148" r="7" fill="#f59e0b" fill-opacity="0.75"/>
+  <circle cx="244" cy="148" r="7" fill="#34d399" fill-opacity="0.85"/>
+  <rect x="880" y="136" width="130" height="26" rx="13" fill="#34d399" fill-opacity="0.14" stroke="#34d399" stroke-opacity="0.45"/>
+  <circle cx="898" cy="149" r="4" fill="#34d399"/>
+  <rect x="912" y="144" width="80" height="10" rx="5" fill="#34d399" fill-opacity="0.55"/>
+
+  <!-- header skeleton -->
+  <rect x="184" y="188" width="250" height="18" rx="9" fill="#e2e8f0" fill-opacity="0.85"/>
+  <rect x="184" y="218" width="160" height="11" rx="5.5" fill="#64748b" fill-opacity="0.6"/>
+
+  <!-- stat pills -->
+  <g>
+    <rect x="184" y="256" width="200" height="86" rx="16" fill="#94a3b8" fill-opacity="0.07" stroke="#94a3b8" stroke-opacity="0.18"/>
+    <rect x="206" y="278" width="70" height="10" rx="5" fill="#64748b" fill-opacity="0.7"/>
+    <rect x="206" y="300" width="110" height="16" rx="8" fill="#34d399" fill-opacity="0.9"/>
+    <rect x="404" y="256" width="200" height="86" rx="16" fill="#94a3b8" fill-opacity="0.07" stroke="#94a3b8" stroke-opacity="0.18"/>
+    <rect x="426" y="278" width="70" height="10" rx="5" fill="#64748b" fill-opacity="0.7"/>
+    <rect x="426" y="300" width="90" height="16" rx="8" fill="#22d3ee" fill-opacity="0.9"/>
+    <rect x="624" y="256" width="200" height="86" rx="16" fill="#94a3b8" fill-opacity="0.07" stroke="#94a3b8" stroke-opacity="0.18"/>
+    <rect x="646" y="278" width="70" height="10" rx="5" fill="#64748b" fill-opacity="0.7"/>
+    <rect x="646" y="300" width="120" height="16" rx="8" fill="#a5b4fc" fill-opacity="0.9"/>
+    <!-- dollar badge -->
+    <rect x="844" y="256" width="170" height="86" rx="16" fill="#34d399" fill-opacity="0.1" stroke="#34d399" stroke-opacity="0.35"/>
+    <circle cx="893" cy="299" r="24" fill="none" stroke="url(#line)" stroke-width="3"/>
+    <path d="M893 285v28M887 291h9a5 5 0 0 1 0 10h-6a5 5 0 0 0 0 10h9"
+          fill="none" stroke="url(#line)" stroke-width="3" stroke-linecap="round"/>
+    <rect x="932" y="284" width="60" height="10" rx="5" fill="#64748b" fill-opacity="0.7"/>
+    <rect x="932" y="302" width="44" height="14" rx="7" fill="#e2e8f0" fill-opacity="0.85"/>
+  </g>
+
+  <!-- area chart -->
+  <g>
+    <line x1="184" y1="600" x2="1016" y2="600" stroke="#94a3b8" stroke-opacity="0.18"/>
+    <line x1="184" y1="530" x2="1016" y2="530" stroke="#94a3b8" stroke-opacity="0.1"/>
+    <line x1="184" y1="460" x2="1016" y2="460" stroke="#94a3b8" stroke-opacity="0.1"/>
+    <path d="M184 560 C 260 540, 300 578, 370 556 C 440 534, 470 484, 540 492 C 610 500, 640 452, 710 440 C 780 428, 810 462, 880 430 C 930 407, 970 412, 1016 396 L 1016 600 L 184 600 Z"
+          fill="url(#area)"/>
+    <path d="M184 560 C 260 540, 300 578, 370 556 C 440 534, 470 484, 540 492 C 610 500, 640 452, 710 440 C 780 428, 810 462, 880 430 C 930 407, 970 412, 1016 396"
+          fill="none" stroke="url(#line)" stroke-width="5" stroke-linecap="round" filter="url(#soft)" opacity="0.65"/>
+    <path d="M184 560 C 260 540, 300 578, 370 556 C 440 534, 470 484, 540 492 C 610 500, 640 452, 710 440 C 780 428, 810 462, 880 430 C 930 407, 970 412, 1016 396"
+          fill="none" stroke="url(#line)" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="880" cy="430" r="7" fill="#0b1120" stroke="#34d399" stroke-width="3"/>
+    <rect x="836" y="368" width="96" height="34" rx="10" fill="#0f172a" stroke="#34d399" stroke-opacity="0.5"/>
+    <rect x="850" y="381" width="66" height="9" rx="4.5" fill="#34d399" fill-opacity="0.85"/>
+  </g>
+
+  <!-- floating side chip: approval list -->
+  <g>
+    <rect x="1000" y="430" width="150" height="170" rx="18" fill="#0f172a" fill-opacity="0.9" stroke="#94a3b8" stroke-opacity="0.25"/>
+    <circle cx="1028" cy="466" r="10" fill="#34d399" fill-opacity="0.2" stroke="#34d399"/>
+    <path d="M1023 466l4 4 7 -8" fill="none" stroke="#34d399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="1048" y="460" width="80" height="10" rx="5" fill="#94a3b8" fill-opacity="0.5"/>
+    <circle cx="1028" cy="506" r="10" fill="#34d399" fill-opacity="0.2" stroke="#34d399"/>
+    <path d="M1023 506l4 4 7 -8" fill="none" stroke="#34d399" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="1048" y="500" width="64" height="10" rx="5" fill="#94a3b8" fill-opacity="0.5"/>
+    <circle cx="1028" cy="546" r="10" fill="#22d3ee" fill-opacity="0.2" stroke="#22d3ee"/>
+    <path d="M1022 546h12" stroke="#22d3ee" stroke-width="2.4" stroke-linecap="round"/>
+    <rect x="1048" y="540" width="72" height="10" rx="5" fill="#94a3b8" fill-opacity="0.5"/>
+  </g>
+</svg>
