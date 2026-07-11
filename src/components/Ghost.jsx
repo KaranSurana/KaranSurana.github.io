@@ -54,7 +54,7 @@ function MatrixCanvas({ until }) {
     if (!until || until < Date.now()) return
     const canvas = ref.current
     const ctx = canvas.getContext('2d')
-    const glyphs = 'アイウエオカキクケコサシスセソタチツテト01<>/{};=+*#$'
+    const glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/{};=+*#$'
     let raf
     let drops = []
 
