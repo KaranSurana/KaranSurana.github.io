@@ -8,3 +8,4 @@ dist/
 # secrets — never commit API keys
 .env
 server/.env
+server/ghost.log

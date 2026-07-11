@@ -37,6 +37,13 @@ const ORIGINS = (
 
 const MOCK = !API_KEY
 
+// abuse controls (all env-tunable)
+const RPM_LIMIT = Number(process.env.GHOST_RPM_LIMIT || 10) // per IP per minute
+const DAILY_IP_LIMIT = Number(process.env.GHOST_DAILY_IP_LIMIT || 40) // per IP per day
+const DAILY_GLOBAL_LIMIT = Number(process.env.GHOST_DAILY_GLOBAL_LIMIT || 500) // Claude calls/day, then degrade to mock
+const ENFORCE_ORIGIN = (process.env.GHOST_ENFORCE_ORIGIN ?? 'true') !== 'false'
+const LOG_FILE = path.join(here, 'ghost.log')
+
 // ── Anthropic client (only if we have a key) ─────────────────
 let anthropic = null
 if (!MOCK) {
@@ -177,13 +184,13 @@ const MOCK_SPECTACLE = [
   { reply: "CRT mode. it's 1994 and Karan's code still compiles.", actions: [{ type: 'crt', param: 'on' }, { type: 'storm', param: '6' }] },
 ]
 let mockCursor = 0
-function mockBrain(lastUserMessage) {
+function mockBrain(lastUserMessage, prefix = '(demo brain — add ANTHROPIC_API_KEY for the real me) ') {
   for (const r of MOCK_RESPONSES) {
     if (r.test.test(lastUserMessage)) return { reply: r.reply, actions: r.actions }
   }
   const pick = MOCK_SPECTACLE[mockCursor % MOCK_SPECTACLE.length]
   mockCursor += 1
-  return { reply: `(demo brain — add ANTHROPIC_API_KEY for the real me) ${pick.reply}`, actions: pick.actions }
+  return { reply: `${prefix}${pick.reply}`, actions: pick.actions }
 }
 
 // ── real brain ───────────────────────────────────────────────
@@ -215,13 +222,13 @@ async function claudeBrain(messages) {
   }
 }
 
-// ── rate limiting: 10 requests / minute / IP ─────────────────
+// ── rate limiting: per-minute + per-day per IP, global daily ─
 const hits = new Map()
 function rateLimited(ip) {
   const now = Date.now()
   const windowStart = now - 60_000
   const list = (hits.get(ip) || []).filter((t) => t > windowStart)
-  if (list.length >= 10) {
+  if (list.length >= RPM_LIMIT) {
     hits.set(ip, list)
     return true
   }
@@ -237,6 +244,24 @@ setInterval(() => {
     else hits.set(ip, fresh)
   }
 }, 300_000).unref()
+
+// daily counters — reset at UTC midnight
+let dayKey = new Date().toISOString().slice(0, 10)
+let globalToday = 0
+const ipToday = new Map()
+function rollDay() {
+  const k = new Date().toISOString().slice(0, 10)
+  if (k !== dayKey) {
+    dayKey = k
+    globalToday = 0
+    ipToday.clear()
+  }
+}
+
+// request log (JSONL) — who asked, from where, how it was served
+function logRequest(entry) {
+  fs.appendFile(LOG_FILE, JSON.stringify({ t: new Date().toISOString(), ...entry }) + '\n', () => {})
+}
 
 // ── sanitize incoming chat history ───────────────────────────
 function sanitizeMessages(raw) {
@@ -279,9 +304,26 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === 'POST' && req.url === '/chat') {
+    rollDay()
     const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket.remoteAddress || '?'
+    const origin = req.headers.origin || ''
+
+    // Browsers always send Origin on cross-origin fetches. Scripts can
+    // spoof it, but this stops every lazy freeloader for free.
+    if (ENFORCE_ORIGIN && !ORIGINS.includes(origin)) {
+      logRequest({ ip, origin, served: 'blocked_origin' })
+      return send(res, 403, { reply: 'I only speak from inside the portfolio.', actions: [] })
+    }
+
     if (rateLimited(ip)) {
+      logRequest({ ip, origin, served: 'blocked_rpm' })
       return send(res, 429, { reply: 'slow down. even ghosts have rate limits.', actions: [] })
+    }
+
+    const usedToday = ipToday.get(ip) || 0
+    if (usedToday >= DAILY_IP_LIMIT) {
+      logRequest({ ip, origin, served: 'blocked_daily_ip' })
+      return send(res, 429, { reply: "you've hit today's quota. the ghost must rest. come back tomorrow.", actions: [] })
     }
 
     let body = ''
@@ -294,12 +336,29 @@ const server = http.createServer(async (req, res) => {
         const messages = sanitizeMessages(JSON.parse(body || '{}').messages)
         if (!messages) return send(res, 400, { reply: 'malformed summoning ritual.', actions: [] })
 
-        const result = MOCK
-          ? mockBrain(messages[messages.length - 1].content)
-          : await claudeBrain(messages)
+        ipToday.set(ip, usedToday + 1)
+
+        // Past the daily Claude budget? Degrade to the mock brain
+        // instead of dying — spend is capped, the show goes on.
+        const overBudget = globalToday >= DAILY_GLOBAL_LIMIT
+        let served
+        let result
+        if (MOCK) {
+          served = 'mock'
+          result = mockBrain(messages[messages.length - 1].content)
+        } else if (overBudget) {
+          served = 'budget_mock'
+          result = mockBrain(messages[messages.length - 1].content, '(daily budget reached — backup brain online) ')
+        } else {
+          served = 'live'
+          globalToday += 1
+          result = await claudeBrain(messages)
+        }
+        logRequest({ ip, origin, served, chars: messages[messages.length - 1].content.length })
         return send(res, 200, result)
       } catch (err) {
         console.error('[karan.exe]', err?.status || '', err?.message || err)
+        logRequest({ ip, origin, served: 'error' })
         return send(res, 502, { reply: 'my brain flickered. try again.', actions: [] })
       }
     })
@@ -313,4 +372,6 @@ server.listen(PORT, () => {
   console.log(`👻 KARAN.EXE listening on http://localhost:${PORT}`)
   console.log(`   mode: ${MOCK ? 'MOCK (no ANTHROPIC_API_KEY — canned personality, real FX)' : `LIVE (${MODEL})`}`)
   console.log(`   allowed origins: ${ORIGINS.join(', ')}`)
+  console.log(`   limits: ${RPM_LIMIT}/min/IP · ${DAILY_IP_LIMIT}/day/IP · ${DAILY_GLOBAL_LIMIT} Claude calls/day globally`)
+  console.log(`   origin enforcement: ${ENFORCE_ORIGIN ? 'ON' : 'off'} · log: ${LOG_FILE}`)
 })
