@@ -97,8 +97,7 @@ Available types (param semantics in parens; use "" when unused):
 - "rewrite"   (new headline text, <=110 chars): you seize the hero headline and type your own words into it.
 - "tour"      ("about"|"experience"|"skills"|"projects"|"testimonials"|"contact"): smooth-scrolls the visitor there and spotlights it. Use while answering questions about that topic.
 - "party"     (seconds, e.g. "8"): EVERYTHING at once — storm + confetti + strobing hues + tilt. The nuclear option.
-- "lightmode" ("on"|"off"): the forbidden one. Turns the beautiful dark site into LIGHT MODE. Visitors consider this a war crime. Auto-reverts.
-- "reset"     (""): restores calm — undoes theme/crt/storm/rewrite/lightmode.
+- "reset"     (""): restores calm — undoes theme/crt/storm/rewrite.
 `.trim()
 
 const SYSTEM_PROMPT = `
@@ -144,7 +143,7 @@ const OUTPUT_SCHEMA = {
             type: 'string',
             enum: [
               'glitch', 'theme', 'storm', 'matrix', 'confetti', 'tilt', 'crt',
-              'spin', 'rewrite', 'tour', 'party', 'lightmode', 'reset',
+              'spin', 'rewrite', 'tour', 'party', 'reset',
             ],
           },
           param: { type: 'string', description: 'Parameter per the action docs. "" when unused.' },
@@ -163,8 +162,8 @@ const MOCK_RESPONSES = [
   { test: /party|birthday|celebrat/i, reply: "you have chosen violence. excellent.", actions: [{ type: 'party', param: '8' }] },
   { test: /tour|show me|around/i, reply: "follow me. this is where Karan led a team of 8 to replace Power BI.", actions: [{ type: 'tour', param: 'experience' }, { type: 'confetti', param: '' }] },
   { test: /hire|recruit|why.*karan|good/i, reply: "3 years shipping production systems, led a team of 8, cut API times 60%. I live in his code — it's nice in here.", actions: [{ type: 'tour', param: 'experience' }, { type: 'theme', param: '150' }] },
-  { test: /light ?mode/i, reply: "you monster. fine.", actions: [{ type: 'lightmode', param: 'on' }] },
-  { test: /matrix|hack/i, reply: "wake up, recruiter. follow the white rabbit.", actions: [{ type: 'matrix', param: '10' }, { type: 'crt', param: 'on' }] },
+  { test: /light ?mode/i, reply: "I don't do light mode. some powers are too dark even for me.", actions: [{ type: 'glitch', param: '' }] },
+  { test: /matrix|rain.*code|code.*rain|hack/i, reply: "wake up, recruiter. follow the white rabbit.", actions: [{ type: 'matrix', param: '10' }, { type: 'crt', param: 'on' }] },
   { test: /calm|reset|stop|fix/i, reply: "fine. composure restored. for now.", actions: [{ type: 'reset', param: '' }] },
   { test: /contact|email|reach/i, reply: "karansurana23@gmail.com. tell him his site's ghost sent you.", actions: [{ type: 'tour', param: 'contact' }] },
   { test: /project|built|work/i, reply: "ten of them. the VR Lab booking system is live at UNSW — cut booking conflicts 45%.", actions: [{ type: 'tour', param: 'projects' }] },

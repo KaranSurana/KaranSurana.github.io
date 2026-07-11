@@ -1723,29 +1723,6 @@ h1, h2, h3, h4 {
   animation: ghost-blink 1s steps(2) infinite;
 }
 
-/* ── the forbidden light mode ───────────────────────────────── */
-html.ghost-light {
-  --bg: #f2f5f9;
-  --bg-elevated: #ffffff;
-  --surface: rgba(15, 23, 42, 0.04);
-  --surface-hover: rgba(15, 23, 42, 0.08);
-  --border: rgba(15, 23, 42, 0.14);
-  --border-strong: rgba(15, 23, 42, 0.3);
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-tertiary: #64748b;
-  --accent-ink: #ffffff;
-}
-html.ghost-light body {
-  background-color: var(--bg);
-}
-html.ghost-light .aurora__blob {
-  opacity: 0.5;
-}
-html.ghost-light .navbar--scrolled {
-  background: rgba(242, 245, 249, 0.8);
-}
-
 /* ── Reduced motion ─────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {

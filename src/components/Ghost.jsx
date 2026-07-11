@@ -11,7 +11,7 @@ const SUGGESTIONS = [
   'give me the tour',
   'why should I hire Karan?',
   'party mode',
-  'turn on light mode',
+  'make it rain code',
 ]
 
 const TOUR_SECTIONS = ['about', 'experience', 'skills', 'projects', 'testimonials', 'contact']
@@ -244,7 +244,6 @@ export default function Ghost() {
     setCrt(false)
     setMatrixUntil(0)
     clearHue()
-    document.documentElement.classList.remove('ghost-light')
     document.getElementById('hero-name')?.classList.remove('ghost-glitch')
     document.getElementById('ghost-avatar')?.classList.remove('ghost-spin')
     document.querySelectorAll('.ghost-tour-glow').forEach((el) => el.classList.remove('ghost-tour-glow'))
@@ -314,14 +313,6 @@ export default function Ghost() {
         case 'party':
           if (reduced) setHue(Math.floor(Math.random() * 360))
           else doParty(clampSeconds(param, 8, 15))
-          break
-        case 'lightmode':
-          if (param === 'off') {
-            document.documentElement.classList.remove('ghost-light')
-          } else {
-            document.documentElement.classList.add('ghost-light')
-            later(() => document.documentElement.classList.remove('ghost-light'), 7000)
-          }
           break
         case 'reset':
           doReset()
