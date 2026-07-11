@@ -29,13 +29,15 @@ export default function About() {
             viewport={viewportOnce}
           >
             <SpotlightCard className="about__portrait">
-              <div className="about__avatar-ring">
-                <img src={identity.avatar} alt="Portrait of Karan Surana" width="168" height="168" />
+              <div className="about__portrait-top">
+                <div className="about__avatar-ring">
+                  <img src={identity.avatar} alt="Portrait of Karan Surana" width="168" height="168" />
+                </div>
+                <h3>{identity.name}</h3>
+                <p>
+                  {identity.role} · {identity.location}
+                </p>
               </div>
-              <h3>{identity.name}</h3>
-              <p>
-                {identity.role} · {identity.location}
-              </p>
 
               <div className="glass education-card">
                 <span className="education-card__icon" aria-hidden="true">
@@ -52,15 +54,18 @@ export default function About() {
           </motion.div>
 
           <div>
-            <motion.p
-              className="about__bio"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-            >
-              {identity.profile}
-            </motion.p>
+            {identity.profile.map((paragraph) => (
+              <motion.p
+                key={paragraph.slice(0, 24)}
+                className="about__bio"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+              >
+                {paragraph}
+              </motion.p>
+            ))}
 
             <motion.ul
               className="services"

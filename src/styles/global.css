@@ -650,13 +650,31 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: 340px 1fr;
   gap: clamp(32px, 5vw, 64px);
-  align-items: start;
+  align-items: stretch; /* left card matches right column height */
+}
+
+.about__grid > * {
+  min-width: 0;
 }
 
 .about__portrait {
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   padding: var(--space-4);
   text-align: center;
+}
+
+/* avatar block floats centered in the available space;
+   education card stays pinned to the bottom */
+.about__portrait-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-4);
 }
 
 .about__avatar-ring {
@@ -725,6 +743,10 @@ h1, h2, h3, h4 {
 .about__bio {
   font-size: 1.08rem;
   line-height: 1.75;
+}
+
+.about__bio + .about__bio {
+  margin-top: var(--space-3);
 }
 
 .services {
