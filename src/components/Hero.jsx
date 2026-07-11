@@ -1,37 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import { animate, motion, useInView, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowDown, Download, Github, Linkedin, Mail } from 'lucide-react'
-import { identity, marqueeTech, socials, stats } from '../data/content.js'
+import { identity, marqueeTech, socials } from '../data/content.js'
 import { EASE, fadeUp, stagger } from '../lib/motion.js'
-import { SpotlightCard } from './ui.jsx'
-
-function CountUp({ value, suffix }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-40px' })
-  const reduceMotion = useReducedMotion()
-  const [display, setDisplay] = useState(0)
-
-  useEffect(() => {
-    if (!inView) return
-    if (reduceMotion) {
-      setDisplay(value)
-      return
-    }
-    const controls = animate(0, value, {
-      duration: 1.8,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (v) => setDisplay(Math.round(v)),
-    })
-    return () => controls.stop()
-  }, [inView, value, reduceMotion])
-
-  return (
-    <div ref={ref} className="stat__value">
-      {display}
-      <span>{suffix}</span>
-    </div>
-  )
-}
 
 export default function Hero() {
   return (
@@ -85,20 +55,6 @@ export default function Hero() {
             </div>
           </motion.div>
         </motion.div>
-
-        <motion.div
-          className="hero__stats"
-          variants={stagger(0.09, 0.6)}
-          initial="hidden"
-          animate="visible"
-        >
-          {stats.map((s) => (
-            <SpotlightCard key={s.label} className="stat" variants={fadeUp}>
-              <CountUp value={s.value} suffix={s.suffix} />
-              <p className="stat__label">{s.label}</p>
-            </SpotlightCard>
-          ))}
-        </motion.div>
       </div>
 
       <motion.div
@@ -106,7 +62,7 @@ export default function Hero() {
         aria-hidden="true"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.1, duration: 0.8, ease: EASE }}
+        transition={{ delay: 0.9, duration: 0.8, ease: EASE }}
       >
         <div className="marquee__track">
           {[0, 1].map((copy) => (
@@ -135,8 +91,8 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 8, 0] }}
         transition={{
-          opacity: { delay: 1.6, duration: 0.8 },
-          y: { delay: 2, duration: 2, repeat: Infinity, ease: 'easeInOut' },
+          opacity: { delay: 1.3, duration: 0.8 },
+          y: { delay: 1.6, duration: 2, repeat: Infinity, ease: 'easeInOut' },
         }}
       >
         <ArrowDown size={20} />

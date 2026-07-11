@@ -23,13 +23,6 @@ export const socials = {
   linkedin: 'https://www.linkedin.com/in/karan-surana-1025b0153/',
 }
 
-export const stats = [
-  { value: 3, suffix: '+', label: 'Years of experience' },
-  { value: 700, suffix: '+', label: 'Students mentored at UNSW' },
-  { value: 25, suffix: '+', label: 'Report types shipped' },
-  { value: 90, suffix: '%', label: 'Write-time cut with AI' },
-]
-
 export const marqueeTech = [
   'React', 'TypeScript', 'Next.js', 'Node.js', 'Express', 'AWS', 'Docker',
   'Kubernetes', 'Kafka', 'Redis', 'PostgreSQL', 'MongoDB', 'MySQL', 'Python',
