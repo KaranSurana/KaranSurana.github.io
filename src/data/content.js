@@ -126,6 +126,18 @@ export const experience = [
 
 export const skillGroups = [
   {
+    icon: 'sparkles',
+    title: 'AI & Agentic Tools',
+    skills: [
+      'Claude Code',
+      'OpenClaw',
+      'LLM API Integration',
+      'Prompt Engineering',
+      'AI-powered Microservices',
+      'Agentic Workflows',
+    ],
+  },
+  {
     icon: 'monitor',
     title: 'Frontend',
     skills: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS'],
@@ -144,18 +156,6 @@ export const skillGroups = [
     icon: 'database',
     title: 'Data & Quality',
     skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Data Structures & Algorithms', 'Unit & Integration Testing'],
-  },
-  {
-    icon: 'sparkles',
-    title: 'AI & Agentic Tools',
-    skills: [
-      'Claude Code',
-      'OpenClaw',
-      'LLM API Integration',
-      'Prompt Engineering',
-      'AI-powered Microservices',
-      'Agentic Workflows',
-    ],
   },
 ]
 

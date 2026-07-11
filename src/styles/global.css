@@ -908,8 +908,8 @@ h1, h2, h3, h4 {
   gap: var(--space-3);
 }
 
-/* with an odd card count, let the last card span the full row */
-.skills-grid > .skill-card:last-child:nth-child(odd) {
+/* with an odd card count, the lead card spans the full first row */
+.skills-grid > .skill-card:first-child:nth-last-child(odd) {
   grid-column: 1 / -1;
 }
 
@@ -977,6 +977,16 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
+}
+
+/* equalize card heights within each row (wrapped titles otherwise
+   make one tile taller than its neighbours) */
+.projects-grid > li {
+  display: flex;
+}
+
+.projects-grid .project-card {
+  flex: 1;
 }
 
 .project-card {
