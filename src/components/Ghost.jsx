@@ -16,6 +16,17 @@ const SUGGESTIONS = [
 
 const TOUR_SECTIONS = ['about', 'experience', 'skills', 'projects', 'testimonials', 'contact']
 
+// Stepped guided tour: each stop scrolls + spotlights a section and drops
+// a one-line piece of commentary. The visitor clicks Next to advance.
+const GUIDED_TOUR = [
+  { id: 'about', line: "Let's start at the top — About. Karan turns vague C-suite ideas into shipped architecture. A product brain, not just a keyboard." },
+  { id: 'experience', line: "Experience — where he's left a dent. He led a team of 8 to replace Power BI for 10+ organisations." },
+  { id: 'skills', line: "Skills — the arsenal. React, TypeScript, Node, AWS, Kafka... and me, the newest weapon in it." },
+  { id: 'projects', line: "Projects — ten of them. The VR Lab booking system is live at UNSW and cut booking conflicts by 45%." },
+  { id: 'testimonials', line: "Testimonials — real people who worked with him, vouching. I didn't bribe them. Probably." },
+  { id: 'contact', line: "And Contact — the finish line. Slide into his inbox and tell him his ghost sent you." },
+]
+
 // ── theme repainting ─────────────────────────────────────────
 const THEME_VARS = ['--accent', '--accent-strong', '--accent-2', '--gradient-accent', '--ring']
 
@@ -171,6 +182,7 @@ export default function Ghost() {
   const [crt, setCrt] = useState(false)
   const [matrixUntil, setMatrixUntil] = useState(0)
   const [confettiBurst, setConfettiBurst] = useState(0)
+  const [tourStep, setTourStep] = useState(null) // null = no tour running
 
   const bodyRef = useRef(null)
   const inputRef = useRef(null)
@@ -242,6 +254,7 @@ export default function Ghost() {
     setHeadline(null)
     setCrt(false)
     setMatrixUntil(0)
+    setTourStep(null)
     clearHue()
     document.getElementById('hero-name')?.classList.remove('ghost-glitch')
     document.getElementById('ghost-avatar')?.classList.remove('ghost-spin')
@@ -269,6 +282,40 @@ export default function Ghost() {
     },
     [doTilt, later, setStorm, stopParty],
   )
+
+  // ── chat helper (defined before execute so the tour can post) ──
+  const pushGhost = useCallback((text) => {
+    setMessages((m) => [...m, { role: 'ghost', text }])
+    apiHistory.current.push({ role: 'assistant', content: text })
+  }, [])
+
+  // ── stepped guided tour ────────────────────────────────────
+  const runTourStep = useCallback(
+    (i) => {
+      const step = GUIDED_TOUR[i]
+      if (!step) {
+        setTourStep(null)
+        return
+      }
+      doTour(step.id)
+      const isLast = i === GUIDED_TOUR.length - 1
+      if (isLast) {
+        pushGhost(`${step.line} …and that's the grand tour. Dare me to do something now.`)
+        setTourStep(null)
+      } else {
+        pushGhost(`${step.line} Want to head to the next one?`)
+        setTourStep(i)
+      }
+    },
+    [doTour, pushGhost],
+  )
+
+  const startGuidedTour = useCallback(() => runTourStep(0), [runTourStep])
+
+  const endTour = useCallback(() => {
+    pushGhost("Tour's over. Roam free — or dare me to redecorate.")
+    setTourStep(null)
+  }, [pushGhost])
 
   const execute = useCallback(
     (action) => {
@@ -309,6 +356,9 @@ export default function Ghost() {
         case 'tour':
           doTour(param)
           break
+        case 'guided_tour':
+          startGuidedTour()
+          break
         case 'party':
           if (reduced) setHue(Math.floor(Math.random() * 360))
           else doParty(clampSeconds(param, 8, 15))
@@ -320,7 +370,7 @@ export default function Ghost() {
           break
       }
     },
-    [doGlitch, doParty, doReset, doSpin, doTilt, doTour, later, setHeadline, setStorm],
+    [doGlitch, doParty, doReset, doSpin, doTilt, doTour, later, setHeadline, setStorm, startGuidedTour],
   )
 
   const runActions = useCallback(
@@ -331,11 +381,6 @@ export default function Ghost() {
   )
 
   // ── chat plumbing ──────────────────────────────────────────
-  const pushGhost = useCallback((text) => {
-    setMessages((m) => [...m, { role: 'ghost', text }])
-    apiHistory.current.push({ role: 'assistant', content: text })
-  }, [])
-
   const send = useCallback(
     async (raw) => {
       const text = raw.trim().slice(0, 400)
@@ -466,13 +511,27 @@ export default function Ghost() {
                   </div>
                 )}
 
-                {showSuggestions && !pending && (
+                {showSuggestions && !pending && tourStep === null && (
                   <div className="ghost-suggestions">
                     {SUGGESTIONS.map((s) => (
                       <button key={s} className="ghost-chip" onClick={() => send(s)}>
                         {s}
                       </button>
                     ))}
+                  </div>
+                )}
+
+                {tourStep !== null && !pending && (
+                  <div className="ghost-suggestions">
+                    <button
+                      className="ghost-chip ghost-chip--next"
+                      onClick={() => runTourStep(tourStep + 1)}
+                    >
+                      Next →
+                    </button>
+                    <button className="ghost-chip" onClick={endTour}>
+                      I'm good, thanks
+                    </button>
                   </div>
                 )}
               </div>

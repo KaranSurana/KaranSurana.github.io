@@ -102,7 +102,8 @@ Available types (param semantics in parens; use "" when unused):
 - "crt"       ("on"|"off"): 90s CRT monitor mode — scanlines, vignette, flicker.
 - "spin"      (""): spins Karan's avatar in the About section.
 - "rewrite"   (new headline text, <=110 chars): you seize the hero headline and type your own words into it.
-- "tour"      ("about"|"experience"|"skills"|"projects"|"testimonials"|"contact"): smooth-scrolls the visitor there and spotlights it. Use while answering questions about that topic.
+- "tour"      ("about"|"experience"|"skills"|"projects"|"testimonials"|"contact"): jumps the visitor to ONE section and spotlights it. Use while answering a question about that specific topic.
+- "guided_tour" (""): starts a STEP-BY-STEP guided tour that begins at the About section and walks through every section with commentary, letting the visitor click "Next" to advance. Use this whenever the visitor asks for a tour, to be shown around, or to see the whole portfolio. Keep your reply short — the tour supplies its own commentary. Never jump straight to Experience for a tour request.
 - "party"     (seconds, e.g. "8"): EVERYTHING at once — storm + confetti + strobing hues + tilt. The nuclear option.
 - "reset"     (""): restores calm — undoes theme/crt/storm/rewrite.
 `.trim()
@@ -150,7 +151,7 @@ const OUTPUT_SCHEMA = {
             type: 'string',
             enum: [
               'glitch', 'theme', 'storm', 'matrix', 'confetti', 'tilt', 'crt',
-              'spin', 'rewrite', 'tour', 'party', 'reset',
+              'spin', 'rewrite', 'tour', 'guided_tour', 'party', 'reset',
             ],
           },
           param: { type: 'string', description: 'Parameter per the action docs. "" when unused.' },
@@ -167,7 +168,7 @@ const OUTPUT_SCHEMA = {
 // ── mock brain (no API key): canned but fully theatrical ─────
 const MOCK_RESPONSES = [
   { test: /party|birthday|celebrat/i, reply: "you have chosen violence. excellent.", actions: [{ type: 'party', param: '8' }] },
-  { test: /tour|show me|around/i, reply: "follow me. this is where Karan led a team of 8 to replace Power BI.", actions: [{ type: 'tour', param: 'experience' }, { type: 'confetti', param: '' }] },
+  { test: /tour|show me|around|walk/i, reply: "follow me. we'll start at the top and work our way down.", actions: [{ type: 'guided_tour', param: '' }] },
   { test: /hire|recruit|why.*karan|good/i, reply: "3 years shipping production systems, led a team of 8, cut API times 60%. I live in his code — it's nice in here.", actions: [{ type: 'tour', param: 'experience' }, { type: 'theme', param: '150' }] },
   { test: /light ?mode/i, reply: "I don't do light mode. some powers are too dark even for me.", actions: [{ type: 'glitch', param: '' }] },
   { test: /matrix|rain.*code|code.*rain|hack/i, reply: "wake up, recruiter. follow the white rabbit.", actions: [{ type: 'matrix', param: '10' }, { type: 'crt', param: 'on' }] },

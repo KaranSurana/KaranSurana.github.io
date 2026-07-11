@@ -1580,6 +1580,17 @@ h1, h2, h3, h4 {
   transform: translateY(-1px);
 }
 
+.ghost-chip--next {
+  background: var(--gradient-accent);
+  color: var(--accent-ink);
+  border-color: transparent;
+  font-weight: 600;
+}
+.ghost-chip--next:hover {
+  filter: brightness(1.1);
+  background: var(--gradient-accent);
+}
+
 .ghost-panel__input {
   display: flex;
   gap: 8px;
