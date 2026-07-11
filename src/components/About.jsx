@@ -46,7 +46,9 @@ export default function About() {
                 <div>
                   <h4>{education.school}</h4>
                   <p className="edu-degree">{education.degree}</p>
-                  <p>{education.detail}</p>
+                  {education.details.map((d) => (
+                    <p key={d}>{d}</p>
+                  ))}
                   <p>{education.period}</p>
                 </div>
               </div>

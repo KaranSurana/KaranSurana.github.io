@@ -55,7 +55,7 @@ export const services = [
 export const education = {
   school: 'UNSW Sydney',
   degree: 'Masters in Information Technology',
-  detail: 'Major: Artificial Intelligence · WAM: Distinction',
+  details: ['Major: Artificial Intelligence', 'WAM: Distinction'],
   period: 'Sep 2022 — Sep 2024',
 }
 
