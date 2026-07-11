@@ -305,7 +305,12 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method === 'POST' && req.url === '/chat') {
     rollDay()
-    const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket.remoteAddress || '?'
+    // Trust X-Forwarded-For ONLY when the request comes from the local
+    // reverse proxy (Caddy). A direct client sending a forged XFF header
+    // must not be able to mint fresh rate-limit buckets.
+    const socketIp = req.socket.remoteAddress || '?'
+    const fromLocalProxy = socketIp === '127.0.0.1' || socketIp === '::1' || socketIp === '::ffff:127.0.0.1'
+    const ip = (fromLocalProxy && req.headers['x-forwarded-for']?.split(',')[0]?.trim()) || socketIp
     const origin = req.headers.origin || ''
 
     // Browsers always send Origin on cross-origin fetches. Scripts can
