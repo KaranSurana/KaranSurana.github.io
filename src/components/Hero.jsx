@@ -28,6 +28,24 @@ function GhostHeadline({ text }) {
 
 export default function Hero() {
   const { headline, setGhostOpen } = useGhostFX()
+
+  // Ambient self-glitch: the name flickers with an RGB-split every ~5s,
+  // like the site is quietly alive. Respects reduced-motion.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let removeTimer
+    const interval = setInterval(() => {
+      const el = document.getElementById('hero-name')
+      if (!el || document.hidden) return
+      el.classList.add('ghost-glitch')
+      removeTimer = setTimeout(() => el.classList.remove('ghost-glitch'), 900)
+    }, 5000)
+    return () => {
+      clearInterval(interval)
+      clearTimeout(removeTimer)
+      document.getElementById('hero-name')?.classList.remove('ghost-glitch')
+    }
+  }, [])
   return (
     <section className="hero" id="top">
       <div className="container">
