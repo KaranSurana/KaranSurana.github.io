@@ -505,10 +505,11 @@ export default function Ghost() {
             className="ghost-dock"
             onClick={() => setOpen(true)}
             aria-label="Open KARAN.EXE — the AI living in this site"
-            initial={{ opacity: 0, y: booted ? 8 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            // long delay only on first page load — reappear instantly after closing
-            transition={{ delay: booted ? 0 : 2.2, duration: booted ? 0.25 : 0.6, ease: EASE }}
+            // fade in place — no vertical travel, so it's at its final
+            // position from the very first painted frame
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: booted ? 0 : 2.2, duration: booted ? 0.2 : 0.6, ease: EASE }}
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}
           >
