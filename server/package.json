@@ -1,0 +1,13 @@
+{
+  "name": "karan-exe-server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Brain for KARAN.EXE — the AI that haunts karansurana.github.io",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0"
+  }
+}

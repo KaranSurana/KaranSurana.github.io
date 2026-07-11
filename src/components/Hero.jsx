@@ -1,9 +1,33 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowDown, Download, Github, Linkedin, Mail } from 'lucide-react'
 import { identity, marqueeTech, socials } from '../data/content.js'
 import { EASE, fadeUp, stagger } from '../lib/motion.js'
+import { useGhostFX } from '../lib/GhostFX.jsx'
+
+// When KARAN.EXE seizes the headline, type its words in live.
+function GhostHeadline({ text }) {
+  const [shown, setShown] = useState('')
+  useEffect(() => {
+    setShown('')
+    let i = 0
+    const id = setInterval(() => {
+      i += 1
+      setShown(text.slice(0, i))
+      if (i >= text.length) clearInterval(id)
+    }, 28)
+    return () => clearInterval(id)
+  }, [text])
+  return (
+    <span className="ghost-headline">
+      {shown}
+      <span className="ghost-headline__caret" aria-hidden="true" />
+    </span>
+  )
+}
 
 export default function Hero() {
+  const { headline } = useGhostFX()
   return (
     <section className="hero" id="top">
       <div className="container">
@@ -13,16 +37,22 @@ export default function Hero() {
             {identity.location} · {identity.role}
           </motion.p>
 
-          <motion.h1 className="display hero__title" variants={fadeUp}>
+          <motion.h1 className="display hero__title" id="hero-name" variants={fadeUp}>
             Karan
             <br />
             <span className="gradient-text">Surana</span>
           </motion.h1>
 
           <motion.p className="hero__headline" variants={fadeUp}>
-            I build <strong>scalable, production-grade web applications</strong> — from
-            responsive interfaces to robust backend systems, with system design and
-            architecture at the core.
+            {headline ? (
+              <GhostHeadline text={headline} />
+            ) : (
+              <>
+                I build <strong>scalable, production-grade web applications</strong> —
+                from responsive interfaces to robust backend systems, with system
+                design and architecture at the core.
+              </>
+            )}
           </motion.p>
 
           <motion.div className="hero__actions" variants={fadeUp}>

@@ -30,7 +30,7 @@ export default function About() {
           >
             <SpotlightCard className="about__portrait">
               <div className="about__portrait-top">
-                <div className="about__avatar-ring">
+                <div className="about__avatar-ring" id="ghost-avatar">
                   <img src={identity.avatar} alt="Portrait of Karan Surana" width="168" height="168" />
                 </div>
                 <h3>{identity.name}</h3>
