@@ -162,8 +162,7 @@ function ConfettiCanvas({ burst }) {
 
 // ── the ghost ────────────────────────────────────────────────
 export default function Ghost() {
-  const { setStorm, setHeadline } = useGhostFX()
-  const [open, setOpen] = useState(false)
+  const { setStorm, setHeadline, ghostOpen: open, setGhostOpen: setOpen } = useGhostFX()
   const [booted, setBooted] = useState(false)
   const [mode, setMode] = useState(null) // 'live' | 'mock' | 'offline'
   const [messages, setMessages] = useState([])

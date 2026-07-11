@@ -1708,6 +1708,24 @@ h1, h2, h3, h4 {
     transform 0.8s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
+/* ── in-paragraph chatbot invite ────────────────────────────── */
+.ghost-invite {
+  font: inherit;
+  font-weight: 600;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  border-bottom: 1px dashed rgba(52, 211, 153, 0.55);
+  cursor: pointer;
+  padding: 0;
+  transition: filter 0.2s ease;
+}
+.ghost-invite:hover {
+  filter: brightness(1.25);
+  border-bottom-style: solid;
+}
+
 /* ── ghost headline takeover ────────────────────────────────── */
 .ghost-headline {
   color: var(--accent);

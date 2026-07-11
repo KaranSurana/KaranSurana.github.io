@@ -7,15 +7,18 @@ const GhostFXContext = createContext({
   setStorm: () => {},
   headline: null,
   setHeadline: () => {},
+  ghostOpen: false,
+  setGhostOpen: () => {},
 })
 
 export function GhostFXProvider({ children }) {
   const [storm, setStorm] = useState(false)
   const [headline, setHeadline] = useState(null)
+  const [ghostOpen, setGhostOpen] = useState(false)
 
   const value = useMemo(
-    () => ({ storm, setStorm, headline, setHeadline }),
-    [storm, headline],
+    () => ({ storm, setStorm, headline, setHeadline, ghostOpen, setGhostOpen }),
+    [storm, headline, ghostOpen],
   )
 
   return <GhostFXContext.Provider value={value}>{children}</GhostFXContext.Provider>

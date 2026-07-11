@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowDown, Download, Github, Linkedin, Mail } from 'lucide-react'
+import { ArrowDown, Bot, Github, Linkedin, Mail } from 'lucide-react'
 import { identity, marqueeTech, socials } from '../data/content.js'
 import { EASE, fadeUp, stagger } from '../lib/motion.js'
 import { useGhostFX } from '../lib/GhostFX.jsx'
@@ -27,7 +27,7 @@ function GhostHeadline({ text }) {
 }
 
 export default function Hero() {
-  const { headline } = useGhostFX()
+  const { headline, setGhostOpen } = useGhostFX()
   return (
     <section className="hero" id="top">
       <div className="container">
@@ -50,7 +50,14 @@ export default function Hero() {
               <>
                 I build <strong>scalable, production-grade web applications</strong> —
                 from responsive interfaces to robust backend systems, with system
-                design and architecture at the core.
+                design and architecture at the core.{' '}
+                <button
+                  type="button"
+                  className="ghost-invite"
+                  onClick={() => setGhostOpen(true)}
+                >
+                  Interact with my AI chatbot.
+                </button>
               </>
             )}
           </motion.p>
@@ -63,15 +70,15 @@ export default function Hero() {
             >
               View Experience
             </motion.a>
-            <motion.a
-              href={identity.resumeUrl}
-              download
+            <motion.button
+              type="button"
               className="btn btn--ghost"
+              onClick={() => setGhostOpen(true)}
               whileTap={{ scale: 0.97 }}
             >
-              <Download size={18} aria-hidden="true" />
-              Résumé
-            </motion.a>
+              <Bot size={18} aria-hidden="true" />
+              Interact with my AI
+            </motion.button>
             <div className="hero__socials">
               <a className="icon-btn" href={socials.github} target="_blank" rel="noreferrer" aria-label="GitHub profile">
                 <Github size={20} />
