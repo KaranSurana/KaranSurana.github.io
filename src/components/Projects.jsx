@@ -78,16 +78,18 @@ function ProjectModal({ project, onClose }) {
         transition={{ duration: 0.5, ease: EASE }}
         onClick={(e) => e.stopPropagation()}
       >
+        <button
+          ref={closeRef}
+          className="modal__close"
+          onClick={onClose}
+          aria-label="Close project details"
+        >
+          <X size={20} />
+        </button>
+
+        <div className="modal__scroll scroll-slim">
         <div className="modal__media">
           <Cover project={project} isModal />
-          <button
-            ref={closeRef}
-            className="modal__close"
-            onClick={onClose}
-            aria-label="Close project details"
-          >
-            <X size={20} />
-          </button>
         </div>
 
         <div className="modal__body">
@@ -117,6 +119,7 @@ function ProjectModal({ project, onClose }) {
               </a>
             )}
           </div>
+        </div>
         </div>
       </motion.div>
     </motion.div>

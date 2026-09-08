@@ -492,7 +492,7 @@ export default function Ghost() {
                 </button>
               </header>
 
-              <div className="ghost-panel__body" ref={bodyRef} aria-live="polite">
+              <div className="ghost-panel__body scroll-slim" ref={bodyRef} aria-live="polite">
                 {messages.map((m, i) => (
                   <div key={i} className={`ghost-msg ghost-msg--${m.role}`}>
                     {m.role === 'ghost' && <span className="ghost-msg__tag">▚</span>}
