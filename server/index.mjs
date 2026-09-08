@@ -26,8 +26,10 @@ try {
 }
 
 const PORT = Number(process.env.GHOST_PORT || 8787)
-const MODEL = process.env.ANTHROPIC_MODEL || 'claude-opus-4-8'
-const API_KEY = process.env.ANTHROPIC_API_KEY || ''
+const MODEL = process.env.OPENAI_MODEL || 'gpt-5.4-mini'
+const API_KEY = process.env.OPENAI_API_KEY || ''
+// 'none' | 'low' | 'medium' | 'high' — the ghost only needs quips, keep it cheap
+const REASONING_EFFORT = process.env.OPENAI_REASONING_EFFORT || 'low'
 const ORIGINS = (
   process.env.GHOST_ORIGINS ||
   'http://localhost:5173,http://127.0.0.1:5173,https://karansurana.github.io'
@@ -40,16 +42,10 @@ const MOCK = !API_KEY
 // abuse controls (all env-tunable)
 const RPM_LIMIT = Number(process.env.GHOST_RPM_LIMIT || 10) // per IP per minute
 const DAILY_IP_LIMIT = Number(process.env.GHOST_DAILY_IP_LIMIT || 40) // per IP per day
-const DAILY_GLOBAL_LIMIT = Number(process.env.GHOST_DAILY_GLOBAL_LIMIT || 500) // Claude calls/day, then degrade to mock
+const DAILY_GLOBAL_LIMIT = Number(process.env.GHOST_DAILY_GLOBAL_LIMIT || 500) // model calls/day, then degrade to mock
 const ENFORCE_ORIGIN = (process.env.GHOST_ENFORCE_ORIGIN ?? 'true') !== 'false'
 const LOG_FILE = path.join(here, 'ghost.log')
 
-// ── Anthropic client (only if we have a key) ─────────────────
-let anthropic = null
-if (!MOCK) {
-  const { default: Anthropic } = await import('@anthropic-ai/sdk')
-  anthropic = new Anthropic({ apiKey: API_KEY, timeout: 30_000 })
-}
 
 // ── the ghost's knowledge of Karan (kept compact) ────────────
 const RESUME_CONTEXT = `
@@ -211,32 +207,47 @@ function mockBrain(lastUserMessage, prefix = '(running on reserve power) ') {
   return { reply: `${prefix}${pick.reply}`, actions: pick.actions }
 }
 
-// ── real brain ───────────────────────────────────────────────
-// Haiku 4.5 / Sonnet 4.5 reject the `effort` parameter — only send
-// it on models that support it (Opus 4.5+, Sonnet 4.6+, Fable).
-const SUPPORTS_EFFORT = !/haiku|sonnet-4-5/.test(MODEL)
+// ── real brain: OpenAI Chat Completions, zero-dependency ─────
+// Structured Outputs (strict json_schema) guarantee the reply/actions
+// shape; prompt caching is automatic for the long system prompt.
+const OPENAI_URL = 'https://api.openai.com/v1/chat/completions'
 
-async function claudeBrain(messages) {
-  const response = await anthropic.messages.create({
-    model: MODEL,
-    max_tokens: 1000,
-    system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }],
-    output_config: {
-      ...(SUPPORTS_EFFORT ? { effort: 'low' } : {}),
-      format: { type: 'json_schema', schema: OUTPUT_SCHEMA },
-    },
-    messages,
+async function openaiBrain(messages) {
+  const res = await fetch(OPENAI_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${API_KEY}` },
+    signal: AbortSignal.timeout(30_000),
+    body: JSON.stringify({
+      model: MODEL,
+      reasoning_effort: REASONING_EFFORT,
+      max_completion_tokens: 1000,
+      store: false,
+      messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
+      response_format: {
+        type: 'json_schema',
+        json_schema: { name: 'karan_exe_turn', strict: true, schema: OUTPUT_SCHEMA },
+      },
+    }),
   })
 
-  if (response.stop_reason === 'refusal') {
+  if (!res.ok) {
+    const detail = await res.text().catch(() => '')
+    const err = new Error(`openai ${res.status}: ${detail.slice(0, 300)}`)
+    err.status = res.status
+    throw err
+  }
+
+  const data = await res.json()
+  const choice = data.choices?.[0]
+  if (choice?.message?.refusal) {
     return { reply: "I'm not doing that one. dare me differently.", actions: [] }
   }
-  const text = response.content.find((b) => b.type === 'text')?.text ?? '{}'
+  const text = choice?.message?.content ?? '{}'
   try {
     const parsed = JSON.parse(text)
     return { reply: String(parsed.reply ?? '...'), actions: Array.isArray(parsed.actions) ? parsed.actions : [] }
   } catch {
-    return { reply: text.slice(0, 200), actions: [] }
+    return { reply: String(text).slice(0, 200), actions: [] }
   }
 }
 
@@ -361,7 +372,7 @@ const server = http.createServer(async (req, res) => {
 
         ipToday.set(ip, usedToday + 1)
 
-        // Past the daily Claude budget? Degrade to the mock brain
+        // Past the daily model budget? Degrade to the mock brain
         // instead of dying — spend is capped, the show goes on.
         const overBudget = globalToday >= DAILY_GLOBAL_LIMIT
         let served
@@ -375,7 +386,7 @@ const server = http.createServer(async (req, res) => {
         } else {
           served = 'live'
           globalToday += 1
-          result = await claudeBrain(messages)
+          result = await openaiBrain(messages)
         }
         logRequest({ ip, origin, served, chars: messages[messages.length - 1].content.length })
         return send(res, 200, result)
@@ -399,6 +410,6 @@ server.listen(PORT, HOST, () => {
   console.log(`👻 KARAN.EXE listening on http://localhost:${PORT}`)
   console.log(`   mode: ${MOCK ? 'MOCK (no ANTHROPIC_API_KEY — canned personality, real FX)' : `LIVE (${MODEL})`}`)
   console.log(`   allowed origins: ${ORIGINS.join(', ')}`)
-  console.log(`   limits: ${RPM_LIMIT}/min/IP · ${DAILY_IP_LIMIT}/day/IP · ${DAILY_GLOBAL_LIMIT} Claude calls/day globally`)
+  console.log(`   limits: ${RPM_LIMIT}/min/IP · ${DAILY_IP_LIMIT}/day/IP · ${DAILY_GLOBAL_LIMIT} model calls/day globally`)
   console.log(`   origin enforcement: ${ENFORCE_ORIGIN ? 'ON' : 'off'} · log: ${LOG_FILE}`)
 })

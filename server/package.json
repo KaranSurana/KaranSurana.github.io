@@ -7,7 +7,5 @@
   "scripts": {
     "start": "node index.mjs"
   },
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.68.0"
-  }
+  "dependencies": {}
 }
