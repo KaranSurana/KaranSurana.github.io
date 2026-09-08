@@ -60,30 +60,47 @@ requirements, architecture, and shipped code.
 
 EXPERIENCE:
 - youXpowered (Jan 2025–present, Mid-Level Software Engineer): architected & led a
-  team of 8 building youXinsights, an enterprise analytics platform that replaced
-  Power BI, serving 10+ organisations; real-time dashboards with 60s refresh across
-  25+ report types; solely owns youXapply (matches customers with lenders); built an
-  AI microservice that auto-generates lender notes, cutting write time 90%.
-  Stack: TypeScript, Next.js, React, Node.js, AWS.
+  team of 8 building youXinsights, an enterprise in-house analytics & visualization
+  platform used by 20+ organisations; built & deployed a predictive Lead Scoring ML
+  model in Python trained on large-scale historical application data; ran
+  requirements discovery with stakeholders, turning ambiguous asks into documented
+  functional/non-functional requirements; real-time dashboards with cross-filtering
+  across 25+ report types; solely owns youXapply end to end (matches customers with
+  lenders, lifted loan conversions). Stack: TypeScript, Next.js, React, Node.js,
+  Python, AWS.
 - UNSW Sydney (Feb 2024–present, Academic Tutor): tutored 100+ students, supervised
   help sessions for 700+, graded 250+.
 - Tutehub (Aug 2023–Jan 2024, Software Developer): Python Selenium automation; React
   frontend + Spring Boot backend for a PTE exam simulation platform.
 - Gida Technologies (Jan 2021–Aug 2022, Full Stack Developer): cut API response time
-  60%; frontend API time -40%; built complete inventory management system; Redis
-  caching; multi-threaded order processing (+30% performance); k6 perf testing.
-  Stack: TypeScript, React, Kafka, AWS, Redis, PostgreSQL, Shopify, Zoho.
+  60%; built a resilient Python ETL pipeline; frontend API time -40%; built complete
+  inventory management system (indexing, query optimisation); Redis caching;
+  multi-threaded order processing (+30% performance).
+  Stack: TypeScript, Python, React, AWS, Kubernetes, Redis, PostgreSQL, Shopify, Zoho.
 
 EDUCATION: UNSW Sydney — Masters in IT (Major: AI), WAM Distinction, 2022–2024.
-SKILLS: React, TypeScript, Next.js, Node.js, Express, AWS (EC2/S3/Lambda/Amplify),
-Docker, Kubernetes, Kafka, Redis, PostgreSQL, MongoDB, MySQL, CI/CD, Python, Java,
-AI tools (Claude Code, OpenClaw, LLM API integration, prompt engineering).
+CERTIFICATIONS: AWS Certified Solutions Architect – Associate, AWS Certified AI
+Practitioner, AWS Certified Cloud Practitioner.
+SKILLS: React, TypeScript, JavaScript, Python, Next.js, Node.js, Express, AWS
+(EC2/S3/Lambda/Amplify), Docker, Kubernetes, Kafka, Redis, PostgreSQL, MongoDB,
+MySQL, CI/CD, AI tools (Claude Code, OpenClaw, LLM API integration, prompt engineering).
 
-PROJECTS: VR Lab Booking System for UNSW (live at unswvrlab.tech, cut booking
-conflicts 45%), Asset Finance Management Platform (MERN, live on AWS CloudFront),
-XenoAI (voice-authenticated UPI payments, ML), CircleUp (social platform),
-MarketXchange (real-time bidding marketplace), Slackr, Airbrb, Decentropedia
-(blockchain wiki), Issue Tracker, EcommerceAPI.
+PROJECTS (12):
+- Lucent AI (live: master.d32t1rbevjle5d.amplifyapp.com): natural-language data
+  analytics platform — ask questions in plain English over MongoDB, PostgreSQL, MySQL,
+  SQL Server or Oracle and get answers, charts and dashboards. No PII ever reaches a
+  third-party AI provider; 7-check data quality analyzer; AI visualization layer with
+  17 chart types; AI dashboard builder that learns the user's chart preferences.
+- Crypto Spot Trading Bot: Python/FastAPI bot for Bybit & Binance spot via CCXT, two
+  live strategies (trend pullback, mean reversion); risk engine with 7 system states,
+  10-gate pre-trade validation, dual kill switches; hot-reloadable YAML config with
+  audit log; SQLite (WAL) persistence + exchange-vs-local reconciliation; websocket
+  OHLCV feeds with ADX/Bollinger regime detection.
+- VR Lab Booking System for UNSW (live at unswvrlab.tech, cut booking conflicts 45%),
+  Asset Finance Management Platform (MERN, live on AWS CloudFront), XenoAI
+  (voice-authenticated UPI payments, ML), CircleUp (social platform), MarketXchange
+  (real-time bidding marketplace), Slackr, Airbrb, Decentropedia (blockchain wiki),
+  Issue Tracker, EcommerceAPI.
 
 CONTACT: karansurana23@gmail.com · github.com/KaranSurana ·
 linkedin.com/in/karan-surana-1025b0153 · +61 448 074 273.
@@ -169,13 +186,13 @@ const OUTPUT_SCHEMA = {
 const MOCK_RESPONSES = [
   { test: /party|birthday|celebrat/i, reply: "you have chosen violence. excellent.", actions: [{ type: 'party', param: '8' }] },
   { test: /tour|show me|around|walk/i, reply: "follow me. we'll start at the top and work our way down.", actions: [{ type: 'guided_tour', param: '' }] },
-  { test: /hire|recruit|why.*karan|good/i, reply: "3 years shipping production systems, led a team of 8, cut API times 60%. I live in his code — it's nice in here.", actions: [{ type: 'tour', param: 'experience' }, { type: 'theme', param: '150' }] },
+  { test: /hire|recruit|why.*karan|good/i, reply: "3 years shipping production systems, led a team of 8 on a platform 20+ organisations use, three AWS certs. I live in his code — it's nice in here.", actions: [{ type: 'tour', param: 'experience' }, { type: 'theme', param: '150' }] },
   { test: /light ?mode/i, reply: "I don't do light mode. some powers are too dark even for me.", actions: [{ type: 'glitch', param: '' }] },
   { test: /matrix|rain.*code|code.*rain|hack/i, reply: "wake up, recruiter. follow the white rabbit.", actions: [{ type: 'matrix', param: '10' }, { type: 'crt', param: 'on' }] },
   { test: /calm|reset|stop|fix/i, reply: "fine. composure restored. for now.", actions: [{ type: 'reset', param: '' }] },
   { test: /contact|email|reach/i, reply: "karansurana23@gmail.com. tell him his site's ghost sent you.", actions: [{ type: 'tour', param: 'contact' }] },
-  { test: /project|built|work/i, reply: "ten of them. the VR Lab booking system is live at UNSW — cut booking conflicts 45%.", actions: [{ type: 'tour', param: 'projects' }] },
-  { test: /skill|stack|tech/i, reply: "react, typescript, node, aws, kafka... and me. I'm the newest skill.", actions: [{ type: 'tour', param: 'skills' }, { type: 'spin', param: '' }] },
+  { test: /project|built|work/i, reply: "twelve of them. Lucent AI lets you interrogate five database engines in plain English. the VR Lab booking system is live at UNSW.", actions: [{ type: 'tour', param: 'projects' }] },
+  { test: /skill|stack|tech/i, reply: "react, typescript, node, python, aws — three AWS certs — and me. I'm the newest skill.", actions: [{ type: 'tour', param: 'skills' }, { type: 'spin', param: '' }] },
 ]
 const MOCK_SPECTACLE = [
   { reply: "watch this. I repainted his entire brand in 60 milliseconds.", actions: [{ type: 'theme', param: '285' }, { type: 'glitch', param: '' }] },

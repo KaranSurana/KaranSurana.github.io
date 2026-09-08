@@ -59,6 +59,12 @@ export const education = {
   period: 'Sep 2022 — Sep 2024',
 }
 
+export const certifications = [
+  'AWS Certified Solutions Architect – Associate',
+  'AWS Certified AI Practitioner',
+  'AWS Certified Cloud Practitioner',
+]
+
 export const experience = [
   {
     company: 'youXpowered',
@@ -66,14 +72,13 @@ export const experience = [
     period: 'Jan 2025 — Present',
     location: 'Sydney, Australia',
     bullets: [
-      'Architected and led a team of 8 in the development of youXinsights — an enterprise-grade, in-house analytics and visualization platform that replaced Power BI, serving 10+ organisations.',
-      'Collaborated with stakeholders to transform business requirements into intuitive, dynamic reports and dashboards tailored to company-specific workflows.',
-      'Engineered real-time data visualization infrastructure with 60-second refresh intervals, implementing advanced cross-filtering and interactive dashboards across 25+ report types.',
+      'Architected and led a team of 8 in the development of youXinsights — an enterprise-grade, in-house analytics and visualization platform used by 20+ organisations.',
+      'Built and deployed an in-house predictive Lead Scoring ML model in Python, trained on large-scale historical application datasets to score new applications accurately.',
+      'Ran requirements discovery with company stakeholders, converting ambiguous asks into documented functional and non-functional requirements that drove the platform’s design and architecture.',
+      'Engineered real-time data visualization infrastructure with advanced cross-filtering and interactive dashboards across 25+ report types.',
       'Solely owned the complete lifecycle — design, development, deployment, and support — of youXapply, matching customers with lenders and significantly enhancing loan conversions.',
-      'Acted as the primary troubleshooter for all product-related issues, handling bug fixes, performance optimizations, and feature rollouts.',
-      'Architected an AI-based microservice that auto-generates lender notes for brokers, transforming raw application data into concise narratives and reducing manual write time by 90%.',
     ],
-    stack: ['TypeScript', 'JavaScript', 'Next.js', 'React', 'Node.js', 'AWS'],
+    stack: ['TypeScript', 'JavaScript', 'Next.js', 'React', 'Node.js', 'Python', 'AWS'],
   },
   {
     company: 'UNSW Sydney',
@@ -107,13 +112,13 @@ export const experience = [
     location: 'India',
     bullets: [
       'Improved backend development and API integrations for the Antara project, reducing API response time and computational overhead by 60%.',
+      'Developed a resilient ETL pipeline in Python to efficiently migrate and transform data for downstream services.',
       'Optimized frontend API calls, reducing frontend response time by 40% and improving page-load and interaction speeds.',
       'Implemented the complete inventory management system — backend architecture, database indexing, and query optimization.',
       'Implemented Redis caching mechanisms to reduce server load and response times.',
       'Integrated multi-threaded API endpoints for parallel processing of large-scale customer orders, improving system performance by 30%.',
-      'Conducted performance testing with k6, identifying and eliminating critical performance bottlenecks.',
     ],
-    stack: ['TypeScript', 'React', 'Kafka', 'AWS', 'Redis', 'Zoho', 'Shopify', 'PostgreSQL'],
+    stack: ['TypeScript', 'Python', 'React', 'AWS', 'Kubernetes', 'Redis', 'Zoho', 'Shopify', 'PostgreSQL'],
   },
 ]
 
@@ -138,7 +143,7 @@ export const skillGroups = [
   {
     icon: 'server',
     title: 'Backend',
-    skills: ['Next.js', 'Node.js', 'Express.js', 'RESTful APIs'],
+    skills: ['Node.js', 'Next.js', 'Express.js', 'Python', 'RESTful APIs'],
   },
   {
     icon: 'cloud',
@@ -154,13 +159,49 @@ export const skillGroups = [
 
 export const projectCategories = [
   { id: 'all', label: 'All' },
+  { id: 'ai', label: 'AI' },
   { id: 'fullstack', label: 'Full Stack' },
+  { id: 'backend', label: 'Backend' },
   { id: 'ml', label: 'Machine Learning' },
   { id: 'blockchain', label: 'Blockchain' },
-  { id: 'api', label: 'RESTful API' },
 ]
 
 export const projects = [
+  {
+    id: 'lucent-ai',
+    title: 'Lucent AI',
+    tagline: 'Ask your database a question in plain English. Get answers, charts, and dashboards back.',
+    category: 'ai',
+    categoryLabel: 'AI',
+    image: '/assets/images/lucent-ai.png',
+    live: 'https://master.d32t1rbevjle5d.amplifyapp.com',
+    github: null,
+    featured: true,
+    bullets: [
+      'Production-grade natural-language querying platform that connects to five database engines — MongoDB, PostgreSQL, MySQL, Microsoft SQL Server, and Oracle — so non-technical users get answers, charts, and dashboards without writing a query.',
+      'Architected so that no PII ever reaches a third-party AI provider.',
+      'Automated data quality analyzer running seven checks, including type inconsistency, missing fields, and null values.',
+      'AI-driven visualization layer that generates charts across 17 chart types.',
+      'AI dashboard builder that reads the connected schemas, populates a set of charts, and learns which charts to generate from the user’s preferences.',
+    ],
+  },
+  {
+    id: 'trading-bot',
+    title: 'Crypto Spot Trading Bot',
+    tagline: 'Production Python/FastAPI bot trading Bybit and Binance spot markets.',
+    category: 'backend',
+    categoryLabel: 'Backend',
+    image: '/assets/images/trading-bot.svg',
+    live: null,
+    github: null,
+    featured: true,
+    bullets: [
+      'Production-grade Python/FastAPI trading bot for Bybit and Binance spot markets using CCXT, running two live strategies: trend pullback and mean reversion.',
+      'Risk engine with 7 system states, a 10-gate pre-trade validation pipeline, and dual kill switches enforcing portfolio-level and per-trade safety limits.',
+      'Hot-reloadable YAML configuration with audit logging, SQLite in WAL mode for trade persistence, and a reconciliation layer keeping exchange and local state consistent.',
+      'Real-time OHLCV websocket feeds with regime-detection indicators (ADX, Bollinger Bands), including tracking down a candle-close event bug that locked ADX at 100.',
+    ],
+  },
   {
     id: 'vr-lab',
     title: 'VR Lab Booking System',
@@ -310,8 +351,8 @@ export const projects = [
     id: 'ecommerce-api',
     title: 'EcommerceAPI',
     tagline: 'Production REST API for an active e-commerce site.',
-    category: 'api',
-    categoryLabel: 'RESTful API',
+    category: 'backend',
+    categoryLabel: 'Backend',
     image: '/assets/images/project-1.jpg',
     live: null,
     github: 'https://github.com/KaranSurana/EcommerceAPI',

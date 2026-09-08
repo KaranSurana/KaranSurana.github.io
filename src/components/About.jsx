@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { BrainCircuit, GraduationCap, MonitorSmartphone, Network, Server } from 'lucide-react'
-import { education, identity, services } from '../data/content.js'
+import { Award, BrainCircuit, GraduationCap, MonitorSmartphone, Network, Server } from 'lucide-react'
+import { certifications, education, identity, services } from '../data/content.js'
 import { fadeUp, stagger, viewportOnce } from '../lib/motion.js'
 import { SectionHeading, SpotlightCard } from './ui.jsx'
 
@@ -50,6 +50,20 @@ export default function About() {
                     <p key={d}>{d}</p>
                   ))}
                   <p>{education.period}</p>
+                </div>
+              </div>
+
+              <div className="glass education-card certification-card">
+                <span className="education-card__icon" aria-hidden="true">
+                  <Award size={22} />
+                </span>
+                <div>
+                  <h4>Certifications</h4>
+                  <ul className="certification-list">
+                    {certifications.map((c) => (
+                      <li key={c}>{c}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </SpotlightCard>

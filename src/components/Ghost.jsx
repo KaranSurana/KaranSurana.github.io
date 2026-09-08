@@ -20,9 +20,9 @@ const TOUR_SECTIONS = ['about', 'experience', 'skills', 'projects', 'testimonial
 // a one-line piece of commentary. The visitor clicks Next to advance.
 const GUIDED_TOUR = [
   { id: 'about', line: "Let's start at the top — About. Karan turns vague C-suite ideas into shipped architecture. A product brain, not just a keyboard." },
-  { id: 'experience', line: "Experience — where he's left a dent. He led a team of 8 to replace Power BI for 10+ organisations." },
-  { id: 'skills', line: "Skills — the arsenal. React, TypeScript, Node, AWS, Kafka... and me, the newest weapon in it." },
-  { id: 'projects', line: "Projects — ten of them. The VR Lab booking system is live at UNSW and cut booking conflicts by 45%." },
+  { id: 'experience', line: "Experience — where he's left a dent. He led a team of 8 building youXinsights, an analytics platform now used by 20+ organisations." },
+  { id: 'skills', line: "Skills — the arsenal. React, TypeScript, Node, Python, AWS... three AWS certs, and me, the newest weapon in it." },
+  { id: 'projects', line: "Projects — twelve of them. Lucent AI lets you interrogate five database engines in plain English. The VR Lab booking system is live at UNSW." },
   { id: 'testimonials', line: "Testimonials — real people who worked with him, vouching. I didn't bribe them. Probably." },
   { id: 'contact', line: "And Contact — the finish line. Slide into his inbox and tell him his ghost sent you." },
 ]
